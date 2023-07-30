@@ -11,21 +11,24 @@ p {
    body {
   background-color: #c6ebf5;
   font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 18px;
   color: #ffffff;
   margin: 20px;
 }
 
 h1 {
-  font-size: 20px;
+  font-size: 25px;
   text-align: center;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
   padding: 10px;
   background-color: #76a0ad;
   border-radius: 10px;
 }
 
 h3 {
-  font-size: 15px;
+  font-size: 20px;
   text-align: center;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
   padding: 10px;
   background-color: #666e70;
   border-radius: 10px;
@@ -52,6 +55,8 @@ h3 {
   th, td { 
     backgrond-color: light pink;
     padding: 3px; 
+    font-family: timesnewroman;
+  color: grey;
   } 
 
    .data { 
