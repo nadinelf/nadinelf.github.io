@@ -22,6 +22,15 @@ h1 {
   background-color: #76a0ad;
   border-radius: 10px;
 }
+
+h3 {
+  font-size: 38px;
+  text-align: center;
+  padding: 10px;
+  background-color: #666e70;
+  border-radius: 10px;
+}
+
 #nadine
    {
      border: green dashed; 
