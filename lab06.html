@@ -13,7 +13,7 @@
 <body>
  
   <!-- This is a super cool amazing nice heading for the "About me" section -->
-  <h1">About me</h1>
+  <h1>About me</h1>
  
 <h3>Purposes of this page</h3>
   <p>My <sup>name</sup> is <strong>Nadine</strong> and this is my <em>first</em> web page. This page has been created for my <strong>"Intro to Web Application"</strong> class. It is very interesting to see how pages are done!</p>
@@ -34,6 +34,23 @@
 });
 
   </script>
+
+    <button id="linkButton"> 
+  Definitely click here though. 
+</button>
+  
+<link  href="https://metasystemic.com/stuff.html" hidden id="linklink">
+</link>
+
+  <script> 
+ $(document).ready(function() {
+  $("button#linkButton").click(function() {
+    $("linklink").Toggle("slow"); 
+  });
+});
+
+  </script>
+  
   <h3 >Where I am from</h3>
   
     <!-- The Brazilians at Dartmouth make so much fun of me for being from the South of the country -->
