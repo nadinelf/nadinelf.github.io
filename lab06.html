@@ -38,14 +38,11 @@
     <button id="linkButton"> 
   Definitely click here though. 
 </button>
-  
-<link  href="https://metasystemic.com/stuff.html" hidden id="linklink">
-</link>
 
   <script> 
  $(document).ready(function() {
   $("button#linkButton").click(function() {
-    $("linklink").Toggle("slow"); 
+    window.location.href = "https://metasystemic.com/stuff.html";
   });
 });
 
