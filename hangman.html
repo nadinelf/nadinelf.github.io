@@ -4,11 +4,39 @@
   <title>Hangman Game!</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+  <style>
+    .letter {
+      cursor: pointer;
+    }
+
+    .correct {
+      color: green;
+      text-decoration: line-through;
+    }
+
+    .incorrect {
+      color: red;
+      text-decoration: line-through;
+    }
+    
+  </style>
+  
   <script> 
     $(document).ready(function () {
       var total_guesses = 10;
-      var word = "SUBDERMATOGLYPHIC";
-      var blanks = "";
+       var words = [
+        "SUBDERMATOGLYPHIC",
+         "ANCHORITES",
+        "ANGIOSPERM",
+        "ANGLEWORMS",
+        "BIFURCATES",
+        "BIVOUACKED",
+        "CYBERPUNKS",
+        "CLAMBERING",
+      ];
+
+      var word = getRandomWord();
+      var blanks = " _ ".repeat(word.length);
       var guesses = "";
 
       $("#word").html(blanks);
@@ -49,6 +77,12 @@
           }
         }
       });
+
+       function getRandomWord() {
+        var randomIndex = Math.floor(Math.random() * words.length);
+        return words[randomIndex];
+      }
+      
     });
   </script>
 </head>
