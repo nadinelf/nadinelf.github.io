@@ -4,6 +4,7 @@
   <title>Hangman Game!</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+ //adding color when someone gets it right or wrong
   <style>
     .letter {
       cursor: pointer;
@@ -22,6 +23,9 @@
   </style>
   
   <script> 
+
+    //list of long words with no repetitive letters
+    
     $(document).ready(function () {
       var total_guesses = 15;
        var words = [
@@ -34,7 +38,8 @@
         "cyberpunks",
         "clambering",
       ];
-
+      
+//random letters 
       var word = getRandomWord();
       var blanks = "_".repeat(word.length);
       var guesses = "";
@@ -44,7 +49,9 @@
       $(".letter").click(function () {
         var id = $(this).attr('id');
         console.log("Clicked on " + id); 
-
+        
+// messages in response of guesses
+     
         if (guesses.includes(id)) { 
           $("#error_msg").html("You already guessed " + id); 
         } else {
@@ -57,6 +64,7 @@
           } else { 
             $("#numleft").html(total_guesses);
 
+        // add found word to right spot
             if (word.includes(id)) {
               var indices = [];
               for (var i = 0; i < word.length; i++) {
@@ -77,7 +85,7 @@
           }
         }
       });
-
+// more random function
        function getRandomWord() {
         var randomIndex = Math.floor(Math.random() * words.length);
         return words[randomIndex];
