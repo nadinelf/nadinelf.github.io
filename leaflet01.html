@@ -10,18 +10,34 @@
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
     #map1 {
       height: 500px;
       width: 800px;
-      margin: 0 auto;
+      margin: 30px auto;
       border: 2px solid #ddd;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
     }
 
-    html,
-    body {
-      height: 100%;
+    h1 {
+      text-align: center;
+      background-color: #007bff;
+      color: #fff;
+      padding: 15px;
       margin: 0;
-      padding: 0;
+    }
+
+    .map-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
   </style>
 
@@ -44,8 +60,10 @@
 </head>
 
 <body onload="initialize">
-  <h1 style="text-align: center;">My Hometown - Porto Alegre</h1>
-  <div id="map1"></div>
+  <div class="map-container">
+    <div id="map1"></div>
+  </div>
+  <h1>My Hometown - Porto Alegre</h1>
 </body>
 
 </html>
