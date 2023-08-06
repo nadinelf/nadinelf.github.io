@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Hometown</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #map1 {
+      height: 500px;
+      width: 800px;
+      margin: 30px auto;
+      border: 2px solid #ddd;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      background-color: #007bff;
+      color: #fff;
+      padding: 15px;
+      margin: 0;
+    }
+
+    .map-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1>My Hometown - Porto Alegre</h1>
+  <div class="map-container">
+    <div id="map1"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <script>
+    var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
+        'Tiles courtesy of <a href="http://www.hot.osm.org">HOT OSM</a>'
+    });
+
+    function initialize() {
+      var map = L.map('map1', {
+        center: [-30.0346, -51.2177], // Porto Alegre coordinates
+        zoom: 14,
+        layers: [OpenStreetMap_HOT]
+      });
+    }
+
+    initialize();
+  </script>
+
+</body>
+
+</html>
