@@ -63,14 +63,6 @@
   <button id="toggleTermo">Toggle the Termo Layer</button>
 </div>
 
-<div id="buttontrechocom">
-  <button id="toggleTrechoCom">Toggle the TrechoCom Layer</button>
-</div>
-
-<div id="buttontrechoen">
-  <button id="toggleTrechoEn">Toggle the TrechoEn Layer</button>
-</div>
-
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -90,8 +82,6 @@
     var edifLayer;
     var hidroVisible = false;
     var termoVisible = false;
-    var trechocomVisible = false;
-    var trechoenVisible = false;
      var edifVisible = false;
     var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       maxZoom: 10,
@@ -195,15 +185,7 @@
               layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
-          })
-          $("#toggleTrechoCom").click(function () {
-  if (trechoComVisible) {
-    trechoComVisible = false;
-    trechoComLayer.removeFrom(map);
-  } else {
-    trechoComVisible = true;
-    trechoComLayer.addTo(map);
-  }
+          }).addTo(map);
 });
         });
 
@@ -218,16 +200,7 @@
               layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
-          })
-          $("#toggleTrechoEn").click(function () {
-  if (trechoEnVisible) {
-    trechoEnVisible = false;
-    trechoEnLayer.removeFrom(map);
-  } else {
-    trechoEnVisible = true;
-    trechoEnLayer.addTo(map);
-  }
-});
+          }).addTo(map);
         });
     }
 
