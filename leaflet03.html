@@ -90,7 +90,7 @@
       .then((data) => {
         hidroLayer = L.geoJSON(data, {
           style: {
-            color: "green";
+            color: "green",
           },
           onEachFeature: function (feature, layer) {
             layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>"
@@ -98,23 +98,24 @@
           }
         }).addTo(map);
         
-        $("#toggleHidro").click(function() {
-          if (hidroVisible) {
-              hidroVisible = false; 
-            hidroLayer.removeFrom(map); 
-           }  else {
-          if (hidroVisible) = true; 
-            hidroLayer.addTo(map);
-          })
-        
-      });
+         $("#toggleHidro").click(function () {
+            if (hidroVisible) {
+              hidroVisible = false;
+              hidroLayer.removeFrom(map);
+            } else {
+              hidroVisible = true;
+              hidroLayer.addTo(map);
+            }
+          });
+
+        });
 
     fetch("edif.geojson")
       .then((response) => response.json())
       .then((data) => {
         L.geoJSON(data, {
           style: {
-            color: "cyan";
+            color: "cyan",
           },
           onEachFeature: function (feature, layer) {
             layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>"
@@ -128,7 +129,7 @@
       .then((data) => {
         L.geoJSON(data, {
           style: {
-            color: "pink";
+            color: "pink",
           },
           onEachFeature: function (feature, layer) {
             layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>"
@@ -143,7 +144,7 @@
       .then((data) => {
         L.geoJSON(data, {
           style: {
-            color: "purple";
+            color: "purple",
           },
           onEachFeature: function (feature, layer) {
             layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b><br>"
@@ -158,7 +159,7 @@
       .then((data) => {
         L.geoJSON(data, {
           style: {
-            color: "brown";
+            color: "brown",
           },
           onEachFeature: function (feature, layer) {
             layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b><br>"
