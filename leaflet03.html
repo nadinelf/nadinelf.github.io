@@ -61,12 +61,7 @@
     <div id="buttontermo">
       <button id="toggleTermo">Toggle the Termo Layer</button>
     </div>
-    <div id="buttontrechocom">
-      <button id="toggleTrechoCom">Toggle the TrechoCom Layer</button>
-    </div>
-    <div id="buttontrechoen">
-      <button id="toggleTrechoEn">Toggle the TrechoEn Layer</button>
-    </div>
+
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -99,7 +94,13 @@
         L.latLng(-33.742000, -73.985000), // Southwest coordinates of Brazil
         L.latLng(5.272000, -34.793000) // Northeast coordinates of Brazil
       );
-
+  
+      Stadia_AlidadeSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+        maxZoom: 20,
+        attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, ' +
+          '&copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+      });
+      
       var map = L.map('map1', {
         center: brazilBounds.getCenter(),
         zoom: 4,
@@ -206,6 +207,7 @@
             }
           }).addTo(map);
         });
+        Stadia_AlidadeSmooth.addTo(map);
     }
 
     initialize();
