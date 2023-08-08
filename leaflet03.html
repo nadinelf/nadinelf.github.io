@@ -57,7 +57,7 @@
   <script src="trechoen.geojson"></script>
 
  <script>
-
+   var energyLayer;
   var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     maxZoom: 10,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
@@ -81,12 +81,13 @@
     fetch("hidro.geojson")
       .then((response) => response.json())
       .then((data) => {
-        L.geoJSON(data, {
+        energyLayer = L.geoJSON(data, {
           style: {
             color: "green"
           },
           onEachFeature: function (feature, layer) {
-            layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b>");
+            layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>"
+            + "Is it operating? " + feature.properties.operaciona );
           }
         }).addTo(map);
       });
@@ -112,7 +113,8 @@
             color: "pink"
           },
           onEachFeature: function (feature, layer) {
-            layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b>");
+            layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>"
+            + "Is it operating? " + feature.properties.operaciona );
           }
         }).addTo(map);
       });
