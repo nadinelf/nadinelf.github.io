@@ -77,7 +77,6 @@
       layers: [OpenStreetMap_HOT]
     });
 
-    // Hydroelectric Plants
     fetch("hidro.geojson")
       .then((response) => response.json())
       .then((data) => {
@@ -91,7 +90,6 @@
         }).addTo(map);
       });
 
-    // Wind Farms
     fetch("edif.geojson")
       .then((response) => response.json())
       .then((data) => {
@@ -105,13 +103,12 @@
         }).addTo(map);
       });
 
-    // Thermal Power Plants
     fetch("termo.geojson")
       .then((response) => response.json())
       .then((data) => {
         L.geoJSON(data, {
           style: {
-            color: "red"
+            color: "pink"
           },
           onEachFeature: function (feature, layer) {
             layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b>");
@@ -119,7 +116,7 @@
         }).addTo(map);
       });
 
-    // Substations
+
     fetch("trechocom.geojson")
       .then((response) => response.json())
       .then((data) => {
@@ -128,12 +125,12 @@
             color: "purple"
           },
           onEachFeature: function (feature, layer) {
-            layer.bindPopup("<b>Name of Stretch " + feature.properties.tipotrecho + "</b>");
+            layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b>");
           }
         }).addTo(map);
       });
 
-    // Transmission Lines (Overhead)
+   
     fetch("trechoen.geojson")
       .then((response) => response.json())
       .then((data) => {
@@ -142,24 +139,12 @@
             color: "brown"
           },
           onEachFeature: function (feature, layer) {
-            layer.bindPopup("<b>Name of Stretch " + feature.properties.tipotrecho + "</b>");
+            layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b>");
           }
         }).addTo(map);
       });
 
-    // Transmission Lines (Underground)
-    fetch("trechoen.geojson")
-      .then((response) => response.json())
-      .then((data) => {
-        L.geoJSON(data, {
-          style: {
-            color: "lightgray"
-          },
-          onEachFeature: function (feature, layer) {
-            layer.bindPopup("<b>Name of Stretch " + feature.properties.tipotrecho + "</b>");
-          }
-        }).addTo(map);
-      });
+
   }
 
   initialize();
