@@ -41,8 +41,8 @@
     }
 
     #button {
-      padding: 10px;
-      background-color: lightgreen;
+      padding: 5px;
+      background-color: green;
     }
   </style>
 
@@ -55,6 +55,22 @@
     <div id="buttonhidro">
       <button id="toggleHidro">Toggle the Hydropower Layer</button>
     </div>
+    <div id="buttonedif">
+  <button id="toggleEdif">Toggle the Edif Layer</button>
+</div>
+
+<div id="buttontermo">
+  <button id="toggleTermo">Toggle the Termo Layer</button>
+</div>
+
+<div id="buttontrechocom">
+  <button id="toggleTrechoCom">Toggle the TrechoCom Layer</button>
+</div>
+
+<div id="buttontrechoen">
+  <button id="toggleTrechoEn">Toggle the TrechoEn Layer</button>
+</div>
+
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -68,7 +84,15 @@
 
   <script>
     var hidroLayer;
+    var termoLayer;
+    var trechocomLayer;
+    var trechoenLayer; 
+    var edifLayer;
     var hidroVisible = false;
+    var termoVisible = false;
+    var trechocomVisible = false;
+    var trechoenVisible = false;
+     var edifVisible = false;
     var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       maxZoom: 10,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
@@ -116,7 +140,7 @@
       fetch("edif.geojson")
         .then((response) => response.json())
         .then((data) => {
-          L.geoJSON(data, {
+          edifLayer = L.geoJSON(data, {
             style: {
               color: "cyan",
             },
@@ -124,13 +148,23 @@
               layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
-          }).addTo(map);
+          })
+
+             $("#toggleEdif").click(function () {
+            if (edifVisible) {
+              edifVisible = false;
+              edifLayer.removeFrom(map);
+            } else {
+              edifVisible = true;
+              edifLayer.addTo(map);
+            }
+          });
         });
 
       fetch("termo.geojson")
         .then((response) => response.json())
         .then((data) => {
-          L.geoJSON(data, {
+         termoLayer = L.geoJSON(data, {
             style: {
               color: "pink",
             },
@@ -138,13 +172,22 @@
               layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
-          }).addTo(map);
+          })
+          $("#toggleTermo").click(function () {
+  if (termoVisible) {
+    termoVisible = false;
+    termoLayer.removeFrom(map);
+  } else {
+    termoVisible = true;
+    termoLayer.addTo(map);
+  }
+});
         });
 
       fetch("trechocom.geojson")
         .then((response) => response.json())
         .then((data) => {
-          L.geoJSON(data, {
+          trechoComLayer = L.geoJSON(data, {
             style: {
               color: "purple",
             },
@@ -152,13 +195,22 @@
               layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
-          }).addTo(map);
+          })
+          $("#toggleTrechoCom").click(function () {
+  if (trechoComVisible) {
+    trechoComVisible = false;
+    trechoComLayer.removeFrom(map);
+  } else {
+    trechoComVisible = true;
+    trechoComLayer.addTo(map);
+  }
+});
         });
 
       fetch("trechoen.geojson")
         .then((response) => response.json())
         .then((data) => {
-          L.geoJSON(data, {
+         trechoEnLayer = L.geoJSON(data, {
             style: {
               color: "brown",
             },
@@ -166,7 +218,16 @@
               layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
-          }).addTo(map);
+          })
+          $("#toggleTrechoEn").click(function () {
+  if (trechoEnVisible) {
+    trechoEnVisible = false;
+    trechoEnLayer.removeFrom(map);
+  } else {
+    trechoEnVisible = true;
+    trechoEnLayer.addTo(map);
+  }
+});
         });
     }
 
