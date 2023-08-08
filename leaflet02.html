@@ -56,93 +56,114 @@
   <script src="trechocom.geojson"></script>
   <script src="trechoen.geojson"></script>
 
-  <script>
-    var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-      maxZoom: 10,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
-        'Tiles courtesy of <a href="http://www.hot.osm.org">HOT OSM</a>'
+ <script>
+  var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    maxZoom: 10,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
+      'Tiles courtesy of <a href="http://www.hot.osm.org">HOT OSM</a>'
+  });
+
+  function initialize() {
+    // Define the bounds of Brazil
+    var brazilBounds = L.latLngBounds(
+      L.latLng(-33.742000, -73.985000), // Southwest coordinates of Brazil
+      L.latLng(5.272000, -34.793000) // Northeast coordinates of Brazil
+    );
+
+    var map = L.map('map1', {
+      center: brazilBounds.getCenter(),
+      zoom: 4,
+      maxBounds: brazilBounds, // Restrict panning to Brazil bounds
+      layers: [OpenStreetMap_HOT]
     });
 
-    function initialize() {
-      // Define the bounds of Brazil
-      var brazilBounds = L.latLngBounds(
-        L.latLng(-33.742000, -73.985000), // Southwest coordinates of Brazil
-        L.latLng(5.272000, -34.793000) // Northeast coordinates of Brazil
-      );
-
-      var map = L.map('map1', {
-        center: brazilBounds.getCenter(),
-        zoom: 4,
-        maxBounds: brazilBounds, // Restrict panning to Brazil bounds
-        layers: [OpenStreetMap_HOT]
+    // Hydroelectric Plants
+    fetch("hidro.geojson")
+      .then((response) => response.json())
+      .then((data) => {
+        L.geoJSON(data, {
+          style: {
+            color: "green"
+          },
+          onEachFeature: function (feature, layer) {
+            layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b>");
+          }
+        }).addTo(map);
       });
 
-      fetch("hidro.geojson")
-        .then((response) => response.json())
-        .then((data) => {
-          L.geoJSON(data, {
-            onEachFeature: function (feature, layer) {
-              layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b>");
-            }
-          }).addTo(map);
-        });
+    // Wind Farms
+    fetch("edif.geojson")
+      .then((response) => response.json())
+      .then((data) => {
+        L.geoJSON(data, {
+          style: {
+            color: "cyan"
+          },
+          onEachFeature: function (feature, layer) {
+            layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b>");
+          }
+        }).addTo(map);
+      });
 
-      fetch("edif.geojson")
-        .then((response) => response.json())
-        .then((data) => {
-          L.geoJSON(data, {
-            style: {
-              color: "yellow"
-            },
-            onEachFeature: function (feature, layer) {
-              layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b>");
-            }
-          }).addTo(map);
-        });
+    // Thermal Power Plants
+    fetch("termo.geojson")
+      .then((response) => response.json())
+      .then((data) => {
+        L.geoJSON(data, {
+          style: {
+            color: "red"
+          },
+          onEachFeature: function (feature, layer) {
+            layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b>");
+          }
+        }).addTo(map);
+      });
 
-      fetch("termo.geojson")
-        .then((response) => response.json())
-        .then((data) => {
-          L.geoJSON(data, {
-            style: {
-              color: "pink"
-            },
-            onEachFeature: function (feature, layer) {
-              layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b>");
-            }
-          }).addTo(map);
-        });
+    // Substations
+    fetch("trechocom.geojson")
+      .then((response) => response.json())
+      .then((data) => {
+        L.geoJSON(data, {
+          style: {
+            color: "purple"
+          },
+          onEachFeature: function (feature, layer) {
+            layer.bindPopup("<b>Name of Stretch " + feature.properties.tipotrecho + "</b>");
+          }
+        }).addTo(map);
+      });
 
-      fetch("trechocom.geojson")
-        .then((response) => response.json())
-        .then((data) => {
-          L.geoJSON(data, {
-            style: {
-              color: "light gray"
-            },
-            onEachFeature: function (feature, layer) {
-              layer.bindPopup("<b>Type of Stretch " + feature.properties.tipotrecho + "</b>");
-            }
-          }).addTo(map);
-        });
+    // Transmission Lines (Overhead)
+    fetch("trechoen.geojson")
+      .then((response) => response.json())
+      .then((data) => {
+        L.geoJSON(data, {
+          style: {
+            color: "brown"
+          },
+          onEachFeature: function (feature, layer) {
+            layer.bindPopup("<b>Name of Stretch " + feature.properties.tipotrecho + "</b>");
+          }
+        }).addTo(map);
+      });
 
-      fetch("trechoen.geojson")
-        .then((response) => response.json())
-        .then((data) => {
-          L.geoJSON(data, {
-            style: {
-              color: "blue"
-            },
-            onEachFeature: function (feature, layer) {
-              layer.bindPopup("<b>Type of Stretch " + feature.properties.especie + "</b>");
-            }
-          }).addTo(map);
-        });
-    }
+    // Transmission Lines (Underground)
+    fetch("trechoen.geojson")
+      .then((response) => response.json())
+      .then((data) => {
+        L.geoJSON(data, {
+          style: {
+            color: "lightgray"
+          },
+          onEachFeature: function (feature, layer) {
+            layer.bindPopup("<b>Name of Stretch " + feature.properties.tipotrecho + "</b>");
+          }
+        }).addTo(map);
+      });
+  }
 
-    initialize();
-  </script>
-
+  initialize();
+</script>
 </body>
 
 </html>
