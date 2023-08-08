@@ -42,7 +42,7 @@
 </head>
 
 <body>
-  <h1>My Hometown - Porto Alegre</h1>
+  <h1>Hydropower in Brazil</h1>
   <div class="map-container">
     <div id="map1"></div>
   </div>
@@ -59,13 +59,27 @@
         'Tiles courtesy of <a href="http://www.hot.osm.org">HOT OSM</a>'
     });
 
-    function initialize() {
+  function initialize() {
+      // Define the bounds of Brazil
+      var brazilBounds = L.latLngBounds(
+        L.latLng(-33.742000, -73.985000), // Southwest coordinates of Brazil
+        L.latLng(5.272000, -34.793000) // Northeast coordinates of Brazil
+      );
+
       var map = L.map('map1', {
-        center: [-30.0346, -51.2177], // Porto Alegre coordinates
-        zoom: 4,
+        center: brazilBounds.getCenter(),
+        zoom: 5,
+        maxBounds: brazilBounds, // Restrict panning to Brazil bounds
         layers: [OpenStreetMap_HOT]
       });
 
+      var smallDotIcon = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+        iconSize: [10, 10],
+        iconAnchor: [5, 5],
+        popupAnchor: [0, -3]
+      });
+    
 fetch("hidro.geojson")
   .then((response) => response.json())
   .then((data) => {
