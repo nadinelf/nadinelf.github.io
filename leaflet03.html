@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
+  <script>  </script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -37,6 +39,8 @@
       align-items: center;
       height: 100vh;
     }
+
+    #button { padding: 10px; background-color: light green; } 
   </style>
 
 </head>
@@ -45,7 +49,9 @@
   <h1>Hydropower in Brazil</h1>
   <div class="map-container">
     <div id="map1"></div>
-  </div>
+ <div id="buttonhidro">
+   <button id="toggleHidro">Toggle the Hydropower Layer</button>
+ </div> 
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -57,7 +63,8 @@
   <script src="trechoen.geojson"></script>
 
  <script>
-   var energyLayer;
+   var hidroLayer;
+   var hidroVisible= false; 
   var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     maxZoom: 10,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
@@ -81,7 +88,7 @@
     fetch("hidro.geojson")
       .then((response) => response.json())
       .then((data) => {
-        energyLayer = L.geoJSON(data, {
+        hidroLayer = L.geoJSON(data, {
           style: {
             color: "green"
           },
@@ -90,6 +97,16 @@
             + "Is it operating? " + feature.properties.operaciona );
           }
         }).addTo(map);
+        
+        $("toggleHidro").click(function() {
+          if (hidroVisible) {
+              hidroVisible = false; 
+            hidroLayer.removeFrom(map1); 
+           }  else {
+          if (hidroVisible) = true; 
+            hidroLayer.addTo(map1);
+          })
+        
       });
 
     fetch("edif.geojson")
@@ -100,12 +117,13 @@
             color: "cyan"
           },
           onEachFeature: function (feature, layer) {
-            layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b>");
+            layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>"
+            + "Is it operating? " + feature.properties.operaciona );
           }
         }).addTo(map);
       });
 
-    fetch("termo.geojson")
+    fetch("termo.geojson") // issue that this is same color/format as hidro.geojson
       .then((response) => response.json())
       .then((data) => {
         L.geoJSON(data, {
@@ -128,7 +146,8 @@
             color: "purple"
           },
           onEachFeature: function (feature, layer) {
-            layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b>");
+            layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b><br>"
+            + "Is it operating? " + feature.properties.operaciona );
           }
         }).addTo(map);
       });
@@ -142,7 +161,8 @@
             color: "brown"
           },
           onEachFeature: function (feature, layer) {
-            layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b>");
+            layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b><br>"
+            + "Is it operating? " + feature.properties.operaciona );
           }
         }).addTo(map);
       });
