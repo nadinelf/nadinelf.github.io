@@ -80,20 +80,15 @@
         popupAnchor: [0, -3]
       });
     
-fetch("hidro.geojson")
+    fetch("hidro.geojson")
   .then((response) => response.json())
   .then((data) => {
-    L.geoJSON(data,
-              {onEachFeature: function(feature, Layer) {
-                layer.bindPopup("<b>nome " + feature.properties.nome + "</b>"); 
-              }
-              }
-             
-             
-             ).addTo(map);
-      });
-      
-    }
+    L.geoJSON(data, {
+      onEachFeature: function (feature, layer) {
+        layer.bindPopup("<b>nome " + feature.properties.nome + "</b>");
+      }
+    }).addTo(map);
+  });
 
     initialize();
   </script>
