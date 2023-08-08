@@ -78,7 +78,7 @@
   .then((data) => {
     L.geoJSON(data, {
       onEachFeature: function (feature, layer) {
-        layer.bindPopup("<b>nome " + feature.properties.nome + "</b>");
+        layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b>");
    {
   "type": "Feature",
   "geometry": {
