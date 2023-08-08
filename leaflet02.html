@@ -72,13 +72,6 @@
         maxBounds: brazilBounds, // Restrict panning to Brazil bounds
         layers: [OpenStreetMap_HOT]
       });
-
-      var smallDotIcon = L.icon({
-        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-        iconSize: [10, 10],
-        iconAnchor: [5, 5],
-        popupAnchor: [0, -3]
-      });
     
     fetch("hidro.geojson")
   .then((response) => response.json())
