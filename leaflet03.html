@@ -9,11 +9,6 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-  var Stadia_AlidadeSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
-	maxZoom: 20,
-	attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-});
-
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -61,13 +56,17 @@
       <button id="toggleHidro">Toggle the Hydropower Layer</button>
     </div>
     <div id="buttonedif">
-  <button id="toggleEdif">Toggle the Edif Layer</button>
-</div>
-
-<div id="buttontermo">
-  <button id="toggleTermo">Toggle the Termo Layer</button>
-</div>
-
+      <button id="toggleEdif">Toggle the Edif Layer</button>
+    </div>
+    <div id="buttontermo">
+      <button id="toggleTermo">Toggle the Termo Layer</button>
+    </div>
+    <div id="buttontrechocom">
+      <button id="toggleTrechoCom">Toggle the TrechoCom Layer</button>
+    </div>
+    <div id="buttontrechoen">
+      <button id="toggleTrechoEn">Toggle the TrechoEn Layer</button>
+    </div>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -83,11 +82,11 @@
     var hidroLayer;
     var termoLayer;
     var trechocomLayer;
-    var trechoenLayer; 
+    var trechoenLayer;
     var edifLayer;
     var hidroVisible = false;
     var termoVisible = false;
-     var edifVisible = false;
+    var edifVisible = false;
     var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       maxZoom: 10,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
@@ -143,9 +142,9 @@
               layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
-          })
+          });
 
-             $("#toggleEdif").click(function () {
+          $("#toggleEdif").click(function () {
             if (edifVisible) {
               edifVisible = false;
               edifLayer.removeFrom(map);
@@ -159,7 +158,7 @@
       fetch("termo.geojson")
         .then((response) => response.json())
         .then((data) => {
-         termoLayer = L.geoJSON(data, {
+          termoLayer = L.geoJSON(data, {
             style: {
               color: "pink",
             },
@@ -167,22 +166,23 @@
               layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
-          })
+          });
+
           $("#toggleTermo").click(function () {
-  if (termoVisible) {
-    termoVisible = false;
-    termoLayer.removeFrom(map);
-  } else {
-    termoVisible = true;
-    termoLayer.addTo(map);
-  }
-});
+            if (termoVisible) {
+              termoVisible = false;
+              termoLayer.removeFrom(map);
+            } else {
+              termoVisible = true;
+              termoLayer.addTo(map);
+            }
+          });
         });
 
       fetch("trechocom.geojson")
         .then((response) => response.json())
         .then((data) => {
-          trechoComLayer = L.geoJSON(data, {
+          trechocomLayer = L.geoJSON(data, {
             style: {
               color: "purple",
             },
@@ -191,13 +191,12 @@
                 "Is it operating? " + feature.properties.operaciona);
             }
           }).addTo(map);
-});
         });
 
       fetch("trechoen.geojson")
         .then((response) => response.json())
         .then((data) => {
-         trechoEnLayer = L.geoJSON(data, {
+          trechoenLayer = L.geoJSON(data, {
             style: {
               color: "brown",
             },
