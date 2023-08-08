@@ -51,6 +51,10 @@
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <script src="hidro.geojson"> </script>
+  <script src="edif.geojson"> </script>
+  <script src="termo.geojson"> </script>
+  <script src="trechocom.geojson"> </script>
+  <script src="trechoen.geojson"> </script>
 
   <script>
     var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
@@ -82,7 +86,53 @@
             }
           }).addTo(map);
         });
+
+  fetch("edif.geojson")
+        .then((response) => response.json())
+        .then((data) => {
+          L.geoJSON(data, {
+            color: yellow;
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b>");
+            }
+          }).addTo(map);
+        });
+    
+  fetch("termo.geojson")
+        .then((response) => response.json())
+        .then((data) => {
+          L.geoJSON(data, {
+            color: pink; 
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b>");
+            }
+          }).addTo(map);
+        });
+    
+        fetch("trechocom.geojson")
+        .then((response) => response.json())
+        .then((data) => {
+          L.geoJSON(data, {
+            color: black;
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup("<b>Name of Stretch " + feature.properties.tipotrecho + "</b>");
+            }
+          }).addTo(map);
+        });
+
+     fetch("trechoen.geojson")
+        .then((response) => response.json())
+        .then((data) => {
+          L.geoJSON(data, {
+            color: orange;
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup("<b>Name of Stretch " + feature.properties.tipotrecho + "</b>");
+            }
+          }).addTo(map);
+        });
+    
     }
+    
 
     initialize();
   </script>
