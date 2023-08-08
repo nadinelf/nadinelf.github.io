@@ -54,7 +54,7 @@
   
   <script>
     var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-      maxZoom: 19,
+      maxZoom: 10,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
         'Tiles courtesy of <a href="http://www.hot.osm.org">HOT OSM</a>'
     });
@@ -68,7 +68,7 @@
 
       var map = L.map('map1', {
         center: brazilBounds.getCenter(),
-        zoom: 5,
+        zoom: 4,
         maxBounds: brazilBounds, // Restrict panning to Brazil bounds
         layers: [OpenStreetMap_HOT]
       });
@@ -83,7 +83,14 @@
 fetch("hidro.geojson")
   .then((response) => response.json())
   .then((data) => {
-    L.geoJSON(data).addTo(map);
+    L.geoJSON(data,
+              {onEachFeature: function(feature, Layer) {
+                layer.bindPopup("<b>")
+              }
+              }
+             
+             
+             ).addTo(map);
       });
       
     }
