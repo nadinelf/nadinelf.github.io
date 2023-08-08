@@ -118,10 +118,10 @@
         .then((data) => {
           L.geoJSON(data, {
             style: {
-              color: "black"
+              color: "light gray"
             },
             onEachFeature: function (feature, layer) {
-              layer.bindPopup("<b>Name of Stretch " + feature.properties.tipotrecho + "</b>");
+              layer.bindPopup("<b>Type of Stretch " + feature.properties.tipotrecho + "</b>");
             }
           }).addTo(map);
         });
@@ -131,10 +131,10 @@
         .then((data) => {
           L.geoJSON(data, {
             style: {
-              color: "orange"
+              color: "blue"
             },
             onEachFeature: function (feature, layer) {
-              layer.bindPopup("<b>Name of Stretch " + feature.properties.tipotrecho + "</b>");
+              layer.bindPopup("<b>Type of Stretch " + feature.properties.especie + "</b>");
             }
           }).addTo(map);
         });
