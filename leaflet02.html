@@ -49,6 +49,8 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script src "hidro.geojson"> </script>
   
   <script>
     var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
@@ -60,7 +62,7 @@
     function initialize() {
       var map = L.map('map1', {
         center: [-30.0346, -51.2177], // Porto Alegre coordinates
-        zoom: 14,
+        zoom: 8,
         layers: [OpenStreetMap_HOT]
       });
     }
