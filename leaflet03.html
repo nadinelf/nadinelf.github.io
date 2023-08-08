@@ -95,11 +95,7 @@
         L.latLng(5.272000, -34.793000) // Northeast coordinates of Brazil
       );
   
-      Stadia_AlidadeSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
-        maxZoom: 20,
-        attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, ' +
-          '&copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-      });
+   
       
       var map = L.map('map1', {
         center: brazilBounds.getCenter(),
@@ -207,7 +203,7 @@
             }
           }).addTo(map);
         });
-        Stadia_AlidadeSmooth.addTo(map);
+      
     }
 
     initialize();
