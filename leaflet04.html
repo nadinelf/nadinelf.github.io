@@ -119,7 +119,9 @@
     success: function (data) {
       console.log("Hydropower data loaded");
       hidroLayer = L.geoJSON(data, {
-           function hidroStyle(feature) {
+           
+        style: hidroStyle,
+        function hidroStyle(feature) {
   return {
     fillColor: 'blue', // Customize the fill color
     weight: 2,
@@ -129,7 +131,6 @@
     fillOpacity: 0.7
   };
 }
-        style: hidroStyle,
         onEachFeature: function (feature, layer) {
           layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
             "Is it operating? " + feature.properties.operaciona);
