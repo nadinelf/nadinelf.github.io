@@ -111,6 +111,17 @@
         "OpenTopoMap": OpenTopoMap
       };
 
+     function hidroStyle(feature) {
+  return {
+    fillColor: 'blue',
+    weight: 2,
+    opacity: 1,
+    color: 'white',
+    dashArray: '3',
+    fillOpacity: 0.7
+  };
+}
+      
       L.control.layers(baseMaps).addTo(map);
 
   var response = $.ajax({
@@ -121,16 +132,7 @@
       hidroLayer = L.geoJSON(data, {
            
         style: hidroStyle,
-        function hidroStyle(feature) {
-  return {
-    fillColor: 'blue', // Customize the fill color
-    weight: 2,
-    opacity: 1,
-    color: 'white',
-    dashArray: '3',
-    fillOpacity: 0.7
-  };
-}
+    
         onEachFeature: function (feature, layer) {
           layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
             "Is it operating? " + feature.properties.operaciona);
