@@ -111,16 +111,7 @@
         "OpenTopoMap": OpenTopoMap
       };
 
-     function hidroStyle(feature) {
-  return {
-    fillColor: 'blue',
-    weight: 2,
-    opacity: 1,
-    color: 'white',
-    dashArray: '3',
-    fillOpacity: 0.7
-  };
-}
+  
       
       L.control.layers(baseMaps).addTo(map);
 
@@ -130,8 +121,6 @@
     success: function (data) {
       console.log("Hydropower data loaded");
       hidroLayer = L.geoJSON(data, {
-           
-        style: hidroStyle,
     
         onEachFeature: function (feature, layer) {
           layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
