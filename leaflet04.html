@@ -114,7 +114,7 @@
       L.control.layers(baseMaps).addTo(map);
 
   var response = $.ajax({
-    url: "hidro.gson",
+    url: "hidro.geojson",
     dataType: "json",
     success: function (data) {
       console.log("Hydropower data loaded");
