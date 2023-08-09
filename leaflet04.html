@@ -113,47 +113,49 @@
       
       L.control.layers(baseMaps).addTo(map);
 
-  var response = $.ajax({
-    url: "hidro.geojson",
-    dataType: "json",
-    success: function (data) {
-      console.log("Hydropower data loaded");
-      hidroLayer = L.geoJSON(data, {
-    
-        onEachFeature: function (feature, layer) {
-          layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
-            "Is it operating? " + feature.properties.operaciona);
-        }
-      });
+      var response;
 
-      $("#toggleHidro").show();
-      $("#toggleHidro").click(function () {
-        if (hidroVisible) {
-          hidroVisible = false;
-          hidroLayer.removeFrom(map);
-        } else {
-          hidroVisible = true;
-          hidroLayer.addTo(map);
-        }
-      });
-    },
-    error: function (xhr) {
-      alert(xhr.statusText);
-    }
-  });
-        var response = $.ajax({
-    url: "edif.geojson",
-    dataType: "json",
-    success: function (data) {
-      console.log("Edif data loaded");
-      hidroLayer = L.geoJSON(data, {
+      response = $.ajax({
+        url: "hidro.geojson",
+        dataType: "json",
+        success: function (data) {
+          console.log("Hydropower data loaded");
+          hidroLayer = L.geoJSON(data, {
             onEachFeature: function (feature, layer) {
               layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
           });
 
-      $("#toggleEdif").show();
+          $("#toggleHidro").show();
+          $("#toggleHidro").click(function () {
+            if (hidroVisible) {
+              hidroVisible = false;
+              hidroLayer.removeFrom(map);
+            } else {
+              hidroVisible = true;
+              hidroLayer.addTo(map);
+            }
+          });
+        },
+        error: function (xhr) {
+          alert(xhr.statusText);
+        }
+      });
+
+      response = $.ajax({
+        url: "edif.geojson",
+        dataType: "json",
+        success: function (data) {
+          console.log("Edif data loaded");
+          edifLayer = L.geoJSON(data, {
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
+                "Is it operating? " + feature.properties.operaciona);
+            }
+          });
+
+          $("#toggleEdif").show();
           $("#toggleEdif").click(function () {
             if (edifVisible) {
               edifVisible = false;
@@ -164,20 +166,21 @@
             }
           });
         }
+      });
 
-      fetch("termo.geojson")
-        .then((response) => response.json())
-        .then((data) => {
+      response = $.ajax({
+        url: "termo.geojson",
+        dataType: "json",
+        success: function (data) {
+          console.log("Termo data loaded");
           termoLayer = L.geoJSON(data, {
-            style: {
-              color: "pink",
-            },
             onEachFeature: function (feature, layer) {
               layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
           });
 
+          $("#toggleTermo").show();
           $("#toggleTermo").click(function () {
             if (termoVisible) {
               termoVisible = false;
@@ -187,7 +190,8 @@
               termoLayer.addTo(map);
             }
           });
-        });
+        }
+      });
 
       fetch("trechocom.geojson")
         .then((response) => response.json())
