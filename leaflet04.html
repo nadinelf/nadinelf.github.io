@@ -67,7 +67,6 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-  <script src="hidro.geojson"></script>
   <script src="edif.geojson"></script>
   <script src="termo.geojson"></script>
   <script src="trechocom.geojson"></script>
@@ -114,15 +113,7 @@
       L.control.layers(baseMaps).addTo(map);
 
 
-      fetch("hidro.geojson")
-        .then((response) => response.json())
-        .then((data) => {
-          var hidroStyle = {
-        color: "green",
-        weight: 2,
-        fillColor: "yellow",
-        fillOpacity: 0.5
-      };
+
           var response = $.ajax({
           url: "hidro.gson",
             dataType: "json",
