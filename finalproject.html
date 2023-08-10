@@ -215,14 +215,19 @@
         }
       });
 
-  response = $.ajax({
-        url: "areasquilombola.geojson",
-        dataType: "json",
-        success: function (data) {
-          console.log("Quilombola data loaded");
+    fetch("areasquilombola.geojson")
+        .then((response) => response.json())
+        .then((data) => {
           quilombolaLayer = L.geoJSON(data, {
+            style: {
+              color: "yellow",
+            },
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b><br>" +
+                "Is it operating? " + feature.properties.operaciona);
             }
-          });
+          }).addTo(map);
+        });
 
           $("#toggleQuilombola").show();
           $("#toggleQuilombola").click(function () {
