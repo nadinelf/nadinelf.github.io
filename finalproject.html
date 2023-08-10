@@ -260,34 +260,6 @@
         }
       });
 
-      fetch("trechocom.geojson")
-        .then((response) => response.json())
-        .then((data) => {
-          trechocomLayer = L.geoJSON(data, {
-            style: {
-              color: "purple",
-            },
-            onEachFeature: function (feature, layer) {
-              layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b><br>" +
-                "Is it operating? " + feature.properties.operaciona);
-            }
-          }).addTo(map);
-        });
-
-      fetch("trechoen.geojson")
-        .then((response) => response.json())
-        .then((data) => {
-          trechoenLayer = L.geoJSON(data, {
-            style: {
-              color: "brown",
-            },
-            onEachFeature: function (feature, layer) {
-              layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b><br>" +
-                "Is it operating? " + feature.properties.operaciona);
-            }
-          }).addTo(map);
-        });
-
     }
 
     initialize();
