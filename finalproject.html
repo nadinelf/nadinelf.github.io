@@ -222,10 +222,6 @@
             style: {
               color: "yellow",
             },
-            onEachFeature: function (feature, layer) {
-              layer.bindPopup("<b>Type of Transmission Line " + feature.properties.tipotrecho + "</b><br>" +
-                "Is it operating? " + feature.properties.operaciona);
-            }
           }).addTo(map);
         });
 
