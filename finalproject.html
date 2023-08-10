@@ -66,6 +66,7 @@
   <div class="map-container">
     <div id="map1"></div>
     <div class="button-container">
+            <button id="toggleVulnerabilidade" class="toggle-button" hidden>Toggle the Vulnerability Layer</button>
       <button id="toggleQuilombola" class="toggle-button" hidden>Toggle the Quilombola Layer</button>
       <button id="toggleHidro" class="toggle-button" hidden>Toggle the Hydropower Layer</button>
       <button id="toggleEdif" class="toggle-button">Toggle the Edif Layer</button>
@@ -76,6 +77,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
+  <script src="brasilvulnerabilidade.geojson"></script>
   <script src="areasquilombola.geojson"></script>
   <script src="hidro.geojson"></script>
   <script src="edif.geojson"></script>
@@ -84,6 +86,7 @@
   <script src="trechoen.geojson"></script>
 
   <script>
+    var vulnerabilidadeLayer;
     var quilombolaLayer;
     var hidroLayer;
     var termoLayer;
@@ -257,6 +260,31 @@
             } else {
               quilombolaVisible = true;
               quilombolaLayer.addTo(map);
+            }
+          });
+        }
+      });
+
+        response = $.ajax({
+        url: "brasilvulnerabilidade.geojson",
+        dataType: "json",
+        success: function (data) {
+          console.log("Vulnerabilidade data loaded");
+          vulnerabilidadeLayer = L.geoJSON(data, {
+            style: {
+              color: "green",
+              fillOpacity: 0.5,
+            }
+          });
+
+          $("#toggleVulnerabilidade").show();
+          $("#toggleVulnerabilidade").click(function () {
+            if (vulnerabilidadeVisible) {
+              vulnerabilidadeVisible = false;
+              vulnerabilidadeLayer.removeFrom(map);
+            } else {
+              vulnerabilidadeVisible = true;
+              vulnerabilidadeLayer.addTo(map);
             }
           });
         }
