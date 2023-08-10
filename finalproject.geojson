@@ -52,7 +52,7 @@
   <h1>Energy in Brazil</h1>
   <div class="map-container">
     <div id="map1"></div>
-     <div id="buttonhidro">
+     <div id="buttonquilombola">
       <button id="toggleQuilombola" hidden>Toggle the Quilombola Layer</button>
     </div>
     <div id="buttonhidro">
