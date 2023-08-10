@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-mH9Ui/15Qmzy3T2F5ijmEIsZmtrHvAgF8uvokM3gJZvWiLTv6JX8lGtohDfAAw2U6fdF1kpyXTjb53DgC/BfKQ=="
+    crossorigin="anonymous" />
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <style>
@@ -35,14 +39,23 @@
 
     .map-container {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       height: 100vh;
     }
 
-    #button {
-      padding: 5px;
-      background-color: green;
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .toggle-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
     }
   </style>
 
@@ -52,19 +65,12 @@
   <h1>Energy in Brazil</h1>
   <div class="map-container">
     <div id="map1"></div>
-    <div id="buttonquilombola">
-      <button id="toggleQuilombola" hidden>Toggle the Quilombola Layer</button>
+    <div class="button-container">
+      <button id="toggleQuilombola" class="toggle-button" hidden>Toggle the Quilombola Layer</button>
+      <button id="toggleHidro" class="toggle-button" hidden>Toggle the Hydropower Layer</button>
+      <button id="toggleEdif" class="toggle-button">Toggle the Edif Layer</button>
+      <button id="toggleTermo" class="toggle-button">Toggle the Termo Layer</button>
     </div>
-    <div id="buttonhidro">
-      <button id="toggleHidro" hidden>Toggle the Hydropower Layer</button>
-    </div>
-    <div id="buttonedif">
-      <button id="toggleEdif">Toggle the Edif Layer</button>
-    </div>
-    <div id="buttontermo">
-      <button id="toggleTermo">Toggle the Termo Layer</button>
-    </div>
-
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -78,7 +84,7 @@
   <script src="trechoen.geojson"></script>
 
   <script>
-    var quilombolaLayer
+    var quilombolaLayer;
     var hidroLayer;
     var termoLayer;
     var trechocomLayer;
@@ -88,6 +94,7 @@
     var hidroVisible = false;
     var termoVisible = false;
     var edifVisible = false;
+
     var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       maxZoom: 10,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
@@ -112,6 +119,7 @@
         maxBounds: brazilBounds, // Restrict panning to Brazil bounds
         layers: [OpenStreetMap_HOT]
       });
+
       var baseMaps = {
         "OpenStreetMap": OpenStreetMap_HOT,
         "OpenTopoMap": OpenTopoMap
@@ -155,15 +163,17 @@
         success: function (data) {
           console.log("Edif data loaded");
           edifLayer = L.geoJSON(data, {
-            onEachFeature: function (feature, layer) {
-              var customIcon = L.icon({
-                iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png", // Update with your icon URL
-                iconAnchor: [12, 41],
-                popupAnchor: [1, -34],
-                shadowSize: [41, 41]
+            pointToLayer: function (feature, latlng) {
+              return L.marker(latlng, {
+                icon: L.icon({
+                  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
+                  iconSize: [25, 41],
+                  iconAnchor: [12, 41],
+                  popupAnchor: [1, -34],
+                })
               });
-              layer.setIcon(customIcon);
-
+            },
+            onEachFeature: function (feature, layer) {
               layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
@@ -188,15 +198,17 @@
         success: function (data) {
           console.log("Termo data loaded");
           termoLayer = L.geoJSON(data, {
-            onEachFeature: function (feature, layer) {
-              var customIcon = L.icon({
-                iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png", // Update with your icon URL
-                iconAnchor: [12, 41],
-                popupAnchor: [1, -34],
-                shadowSize: [41, 41]
+            pointToLayer: function (feature, latlng) {
+              return L.marker(latlng, {
+                icon: L.icon({
+                  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+                  iconSize: [25, 41],
+                  iconAnchor: [12, 41],
+                  popupAnchor: [1, -34],
+                })
               });
-              layer.setIcon(customIcon);
-
+            },
+            onEachFeature: function (feature, layer) {
               layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
@@ -215,26 +227,29 @@
         }
       });
 
-  fetch("areasquilombola.geojson")
-  .then((response) => response.json())
-  .then((data) => {
-    quilombolaLayer = L.geoJSON(data, {
-      style: {
-        color: "yellow",
-      },
-    }).addTo(map);
+      response = $.ajax({
+        url: "areasquilombola.geojson",
+        dataType: "json",
+        success: function (data) {
+          console.log("Quilombola data loaded");
+          quilombolaLayer = L.geoJSON(data, {
+            style: {
+              color: "yellow",
+            }
+          });
 
-    $("#toggleQuilombola").show();
-    $("#toggleQuilombola").click(function () {
-      if (quilombolaVisible) {
-        quilombolaVisible = false;
-        quilombolaLayer.removeFrom(map);
-      } else {
-        quilombolaVisible = true;
-        quilombolaLayer.addTo(map);
-      }
-    });
-  });
+          $("#toggleQuilombola").show();
+          $("#toggleQuilombola").click(function () {
+            if (quilombolaVisible) {
+              quilombolaVisible = false;
+              quilombolaLayer.removeFrom(map);
+            } else {
+              quilombolaVisible = true;
+              quilombolaLayer.addTo(map);
+            }
+          });
+        }
+      });
 
       fetch("trechocom.geojson")
         .then((response) => response.json())
