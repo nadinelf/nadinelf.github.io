@@ -215,28 +215,26 @@
         }
       });
 
-    fetch("areasquilombola.geojson")
-        .then((response) => response.json())
-        .then((data) => {
-          quilombolaLayer = L.geoJSON(data, {
-            style: {
-              color: "yellow",
-           }, )
-          
-          }).addTo(map);
-        });
+  fetch("areasquilombola.geojson")
+  .then((response) => response.json())
+  .then((data) => {
+    quilombolaLayer = L.geoJSON(data, {
+      style: {
+        color: "yellow",
+      },
+    }).addTo(map);
 
-          $("#toggleQuilombola").show();
-          $("#toggleQuilombola").click(function () {
-            if (quilombolaVisible) {
-              quilombolaVisible = false;
-              quilombolaLayer.removeFrom(map);
-            } else {
-              quilombolaVisible = true;
-              quilombolaLayer.addTo(map);
-            }
-          });
-      });
+    $("#toggleQuilombola").show();
+    $("#toggleQuilombola").click(function () {
+      if (quilombolaVisible) {
+        quilombolaVisible = false;
+        quilombolaLayer.removeFrom(map);
+      } else {
+        quilombolaVisible = true;
+        quilombolaLayer.addTo(map);
+      }
+    });
+  });
 
       fetch("trechocom.geojson")
         .then((response) => response.json())
