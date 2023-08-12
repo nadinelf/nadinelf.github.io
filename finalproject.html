@@ -57,17 +57,24 @@
       cursor: pointer;
       margin: 5px;
     }
+
+     .toggle-button.vulnerabilidade,
+    .toggle-button.quilombola {
+      background-color: #66a3ff; /* Lighter shade of blue */
+      color: white;
+    }
+    
   </style>
 
 </head>
 
 <body>
-  <h1>Energy in Brazil</h1>
+  <h1 style="background-color: #99c2ff;">Energy in Brazil</h1>
   <div class="map-container">
     <div id="map1"></div>
     <div class="button-container">
-            <button id="toggleVulnerabilidade" class="toggle-button" hidden>Toggle the Vulnerability Layer</button>
-      <button id="toggleQuilombola" class="toggle-button" hidden>Toggle the Quilombola Layer</button>
+       <button id="toggleVulnerabilidade" class="toggle-button vulnerabilidade" hidden>Toggle the Vulnerability Layer</button>
+      <button id="toggleQuilombola" class="toggle-button quilombola" hidden>Toggle the Quilombola Layer</button>
       <button id="toggleHidro" class="toggle-button" hidden>Toggle the Hydropower Layer</button>
       <button id="toggleEdif" class="toggle-button">Toggle the Edif Layer</button>
       <button id="toggleTermo" class="toggle-button">Toggle the Termo Layer</button>
