@@ -31,7 +31,7 @@
 
     h1 {
       text-align: center;
-      background-color: #007bff;
+      background-color: #66a3ff; /* Lighter shade of blue */
       color: #fff;
       padding: 15px;
       margin: 0;
@@ -58,16 +58,50 @@
       margin: 5px;
     }
 
-     .toggle-button.vulnerabilidade,
+    .toggle-button.vulnerabilidade,
     .toggle-button.quilombola {
       background-color: #66a3ff; /* Lighter shade of blue */
       color: white;
     }
     
+    .container {
+      text-align: center;
+    }
+
+    #ball {
+      width: 50px;
+      height: 50px;
+      background-color: #ff5733;
+      border-radius: 50%;
+      position: relative;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-200px);
+      }
+    }
+
   </style>
 
 </head>
 
+<body>
+  <div class="container">
+    <div id="ball"></div>
+    <p>
+      Imagine you have a super bouncy ball. When you throw it on the ground, it bounces back up, right? That
+      bouncing action is like energy. Energy is a special invisible thing that helps things happen and makes them move.
+      Just like how the bouncy ball has the power to bounce, everything around us, like toys, cars, and even our own
+      bodies, has its own kind of energy that makes it work and move. So, energy is like the superpower that makes
+      everything in the world go!
+    </p>
+  </div>
+  
 <body>
   <h1 style="background-color: #99c2ff;">Energy in Brazil</h1>
   <div class="map-container">
