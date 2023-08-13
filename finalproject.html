@@ -87,9 +87,12 @@
       }
     }
     
-     /* Tooltip styles */
-    .tooltip {
+     //Tooltip styles
+    .tooltip-container {
       position: relative;
+    }
+
+    .tooltip {
       display: inline-block;
       cursor: pointer;
     }
@@ -111,11 +114,10 @@
       transition: opacity 0.3s, visibility 0.3s;
     }
 
-    .tooltip:hover .tooltip-content {
+    .tooltip-container:hover .tooltip-content {
       visibility: visible;
       opacity: 1;
     }
-
   </style>
 
 </head>
@@ -146,12 +148,12 @@
     <p>In Brazil, hydropower energy has been a source of both electricity and energy injustices. While big dams like the <span class="tooltip">
         <span class="tooltip-content">
           <img src="belomonte.jpeg" alt="Belo Monte">
-        </span>
-      and</span> <span class="tooltip">
+        </span> <span class="tooltip">Belo Monte</span></span>
+      and <span class="tooltip">
         <span class="tooltip-content">
           <img src="Itaipu.jpeg" alt="Itaipu">
         </span>
-      have</span>  brought power to cities and industries, they've also caused problems. Indigenous communities have faced displacement
+      have</span> <span class="tooltip">Itaipu</span></span> brought power to cities and industries, they've also caused problems. Indigenous communities have faced displacement
       from their lands, leading to cultural and social disruptions. The dams can harm the Amazon rainforest, disrupting the natural flow of 
       rivers and impacting local plants and animals. Sometimes, the benefits of this energy don't reach everyone equally, with rural and 
       marginalized communities often left with the negative effects while others reap the rewards.</p>
