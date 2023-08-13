@@ -77,13 +77,20 @@
       animation: bounce 2s ease-in-out infinite;
     }
 
-     #waterfall {
+        #waterfall-container {
       position: relative;
-      width: 150px;
-      height: 300px;
-      background-color: #00f;
+      width: 300px;
+      height: 200px;
       margin: 30px auto;
-      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    #waterfall {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      background-color: #00f;
       animation: waterfall 2s linear infinite;
     }
 
@@ -96,14 +103,15 @@
       }
     }
     
-    @keyframes waterfall {
+        @keyframes waterfall {
       0% {
-        transform: translateY(0);
+        transform: translateY(-100px);
       }
       100% {
         transform: translateY(100px);
       }
     }
+
   </style>
 
 </head>
@@ -116,8 +124,7 @@
       Imagine you have a super bouncy ball. When you throw it on the ground, it bounces back up, right? That
       bouncing action is like energy. Energy is a special invisible thing that helps things happen and makes them move.
       Just like how the bouncy ball has the power to bounce, everything around us, like toys, cars, and even our own
-      bodies, has its own kind of energy that makes it work and move. So, energy is like the superpower that makes
-      everything in the world go!
+      bodies, has its own kind of energy that makes it work and move. 
     </p>
   </div>
   
@@ -125,10 +132,14 @@
     <p>
       Hydropower energy is like using the power of water to make things work. Imagine a big waterfall with water rushing
       down really fast. People can put special machines in the water that use its energy to spin around, just like a
-      water wheel or a spinning top. These machines are like superheroes that create electricity, which is a special kind
-      of power we use to make our lights shine, our toys run, and so much more. So, hydropower is like having a super fun
+      water wheel or a spinning top. So, hydropower is like having a super fun
       and strong friend, water, that helps us make electricity by playing and spinning around!
     </p>
+    <p>In Brazil, hydropower energy has been a source of both electricity and energy injustices. While big dams like the Belo Monte
+      and Itaipu have brought power to cities and industries, they've also caused problems. Indigenous communities have faced displacement
+      from their lands, leading to cultural and social disruptions. The dams can harm the Amazon rainforest, disrupting the natural flow of 
+      rivers and impacting local plants and animals. Sometimes, the benefits of this energy don't reach everyone equally, with rural and 
+      marginalized communities often left with the negative effects while others reap the rewards.</p>
   </div>
   
  
