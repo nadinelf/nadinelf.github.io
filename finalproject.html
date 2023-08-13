@@ -77,22 +77,6 @@
       animation: bounce 2s ease-in-out infinite;
     }
 
-        #waterfall-container {
-      position: relative;
-      width: 300px;
-      height: 200px;
-      margin: 30px auto;
-      overflow: hidden;
-    }
-
-    #waterfall {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 100px;
-      background-color: #00f;
-      animation: waterfall 2s linear infinite;
-    }
 
     @keyframes bounce {
       0%, 100% {
@@ -102,13 +86,35 @@
         transform: translateY(-200px);
       }
     }
-    
-        @keyframes waterfall {
+      /* Waterfall animation */
+    .waterfall-container {
+      position: relative;
+      width: 100px;
+      height: 200px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .waterfall {
+      position: absolute;
+      bottom: 0;
+      width: 100px;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 10px solid blue;
+      animation: waterfall 2s linear infinite;
+    }
+
+    @keyframes waterfall {
       0% {
-        transform: translateY(-100px);
+        height: 0;
+      }
+      50% {
+        height: 120px;
       }
       100% {
-        transform: translateY(100px);
+        height: 0;
       }
     }
 
@@ -117,7 +123,7 @@
 </head>
 
 <body>
- <h1 style="background-color: #99c2ff;">Energy in Brazil
+ <h1 style="background-color: #99c2ff;">
    <a href="https://youtu.be/5AIW7j_Xjc4" target="_blank" rel="noopener noreferrer">
     Energy in <span style="cursor: pointer;">Brazil</span>
   </a></h1>
