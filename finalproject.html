@@ -113,12 +113,19 @@
       visibility: hidden;
       opacity: 0;
       transition: opacity 0.3s, visibility 0.3s;
+       max-width: 150px;
     }
 
     .tooltip-container:hover .tooltip-content {
       visibility: visible;
       opacity: 1;
     }
+
+    .tooltip-content img {
+  max-width: 30%;
+  height: auto; 
+}
+    
   </style>
 
 </head>
