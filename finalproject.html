@@ -100,11 +100,12 @@
 
     .tooltip-content {
       position: absolute;
+      bottom: 20px;
       top: -30px;
       left: 50%;
       transform: translateX(-50%);
-      width: 200px;
-      padding: 10px;
+      width: 150px;
+      padding: 5px;
       background-color: rgba(0, 0, 0, 0.7);
       color: white;
       font-size: 14px;
@@ -167,8 +168,74 @@
       rivers and impacting local plants and animals. Sometimes, the benefits of this energy don't reach everyone equally, with rural and 
       marginalized communities often left with the negative effects while others reap the rewards.</p>
   </div>
-  
- 
+
+<div id="hangman-game">
+  <h1>Hangman Game: How do we call big projects that harm marginalized communities?</h1>
+  <div>
+    <p>You have <span id="numleft">15</span> chances left.</p>
+  </div>
+  <div>
+    <p>The word to guess is <span id="word" style="font-weight:bold;"></span></p>
+  </div>
+  <div>
+    <p>Click on a letter to make a guess!</p>
+    <p>
+      <span class="letter" id="i">i</span>
+      <span class="letter" id="n">n</span>
+      <span class="letter" id="j">j</span>
+      <span class="letter" id="u">u</span>
+      <span class="letter" id="s">s</span>
+      <span class="letter" id="t">t</span>
+      <span class="letter" id="c">c</span>
+      <span class="letter" id="e">e</span>
+    </p>
+  </div>
+  <div id="error_msg" style="color:red;"></div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    var total_guesses = 15;
+    var word = "injustice";
+    var blanks = "_".repeat(word.length);
+    var guesses = "";
+    $("#word").html(blanks);
+
+    $(".letter").click(function () {
+      var id = $(this).attr('id');
+
+      if (guesses.includes(id)) {
+        $("#error_msg").html("You already guessed " + id);
+      } else {
+        guesses = guesses + id;
+        $("#" + id).css('text-decoration', 'line-through');
+        total_guesses = total_guesses - 1;
+        if (total_guesses < 0) {
+          $("#error_msg").html("You are out of guesses. You lose! It is not 'development'; it's 'injustice!'");
+        } else {
+          $("#numleft").html(total_guesses);
+          if (word.includes(id)) {
+            var indices = [];
+            for (var i = 0; i < word.length; i++) {
+              if (word[i] === id) {
+                indices.push(i);
+              }
+            }
+            for (var i = 0; i < indices.length; i++) {
+              var index = indices[i];
+              blanks = blanks.substr(0, index) + id + blanks.substr(index + 1);
+            }
+            $("#word").html(blanks);
+            if (blanks === word) {
+              $("#error_msg").text("You win! It's an injustice indeed");
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
   <div class="map-container">
     <div id="map1"></div>
     <div class="button-container">
