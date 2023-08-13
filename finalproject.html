@@ -87,31 +87,33 @@
       }
     }
     
-    .waterfall {
-      position: absolute;
-      bottom: 0;
-      left: 50%; /* Adjust to position the waterfall in the center */
-      width: 10px;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-bottom: 10px solid blue;
-      animation: waterfall 2s linear infinite;
+     /* Tooltip styles */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
     }
 
-    @keyframes waterfall {
-      0% {
-        height: 0;
-        transform: translateX(-50%);
-      }
-      50% {
-        height: 120px;
-        transform: translateX(-50%);
-      }
-      100% {
-        height: 0;
-        transform: translateX(-50%);
-      }
+    .tooltip-content {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      font-size: 14px;
+      text-align: center;
+      border-radius: 5px;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    .tooltip:hover .tooltip-content {
+      visibility: visible;
+      opacity: 1;
     }
 
   </style>
@@ -141,8 +143,15 @@
       water wheel or a spinning top. So, hydropower is like having a super fun
       and strong friend, water, that helps us make electricity by playing and spinning around!
     </p>
-    <p>In Brazil, hydropower energy has been a source of both electricity and energy injustices. While big dams like the Belo Monte
-      and Itaipu have brought power to cities and industries, they've also caused problems. Indigenous communities have faced displacement
+    <p>In Brazil, hydropower energy has been a source of both electricity and energy injustices. While big dams like the <span class="tooltip">
+        <span class="tooltip-content">
+          <img src="belomonte.jpeg" alt="Belo Monte">
+        </span>
+      and</span> <span class="tooltip">
+        <span class="tooltip-content">
+          <img src="itaipu.jpeg" alt="Itaipu">
+        </span>
+      have</span>  brought power to cities and industries, they've also caused problems. Indigenous communities have faced displacement
       from their lands, leading to cultural and social disruptions. The dams can harm the Amazon rainforest, disrupting the natural flow of 
       rivers and impacting local plants and animals. Sometimes, the benefits of this energy don't reach everyone equally, with rural and 
       marginalized communities often left with the negative effects while others reap the rewards.</p>
