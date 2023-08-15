@@ -68,24 +68,7 @@
       text-align: center;
     }
 
-    #ball {
-      width: 50px;
-      height: 50px;
-      background-color: #ff5733;
-      border-radius: 50%;
-      position: relative;
-      animation: bounce 2s ease-in-out infinite;
-    }
-
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-200px);
-      }
-    }
+   
     
      //Tooltip styles
  
@@ -138,6 +121,11 @@
     .link-choice {
       margin-top: 10px; 
     }
+
+      .map-description {
+      max-width: 50%;
+      padding: 10px;
+    }
     
   </style>
 
@@ -156,7 +144,7 @@
   </a></h1>
   
   <div class="container">
-    <div id="ball"></div>
+
     <p>
       Imagine you have a super bouncy ball. When you throw it on the ground, it bounces back up, right? That
       bouncing action is like energy. Energy is a special invisible thing that helps things happen and makes them move.
@@ -527,19 +515,19 @@
               -55.3875,180,80.236&zoom=true&previewImage=false&scale=true&legendlayers=true&disable_scroll=true&theme=light"></iframe></div>
     }
 
-   <div class="map-container">
-    <div class="embed-container">
-      <iframe width="500" height="400" frameborder="0" scrolling="no" 
-        marginheight="0" marginwidth="0" title="Energy use x large dams construction" 
-        src="//dartmouth.maps.arcgis.com/apps/Embed/index.html?webmap=43327c892dd14ed492cf8e48c2736337&extent=-180,
-        -55.3875,180,80.236&zoom=true&previewImage=false&scale=true&legendlayers=true&disable_scroll=true&theme=light">
-      </iframe>
-    </div>
-    <div class="map-description">
-      <p>In this map, you can see two layers: Energy Use by country (Feature layer by Maps.com_carto), in blue, and Construction of Large Dams (Source: Feature layer by tboucher), in green dots. In both cases, darker color represents higher intensity (darker blue: higher energy use; darker green: more dams). Here, you can see how countries in North use more energy, and that the South produces more energy. Why is this an issue?</p>
-      <p>Well, because of a larger trend called "Ecological imperialism," in which countries of the North extract the natural resources of the South (Fernandes, 2020). It is often the case that energy produced in developing countries is sold to developed ones, and, sometimes, even the owners of the producing companies are from the developed world! Of course that dams are not the only type of energy, but you can definitely see a trend here.</p>
-    </div>
+ <div class="map-container">
+  <div class="embed-container">
+    <iframe width="500" height="400" frameborder="0" scrolling="no" 
+      marginheight="0" marginwidth="0" title="Energy use x large dams construction" 
+      src="//dartmouth.maps.arcgis.com/apps/Embed/index.html?webmap=43327c892dd14ed492cf8e48c2736337&extent=-180,
+      -55.3875,180,80.236&zoom=true&previewImage=false&scale=true&legendlayers=true&disable_scroll=true&theme=light">
+    </iframe>
   </div>
+  <div class="map-description">
+    <p>In this map, you can see two layers: Energy Use by country (Feature layer by Maps.com_carto), in blue, and Construction of Large Dams (Source: Feature layer by tboucher), in green dots. In both cases, darker color represents higher intensity (darker blue: higher energy use; darker green: more dams). Here, you can see how countries in North use more energy, and that the South produces more energy. Why is this an issue?</p>
+    <p>Well, because of a larger trend called "Ecological imperialism," in which countries of the North extract the natural resources of the South (Fernandes, 2020). It is often the case that energy produced in developing countries is sold to developed ones, and, sometimes, even the owners of the producing companies are from the developed world! Of course that dams are not the only type of energy, but you can definitely see a trend here.</p>
+  </div>
+</div>
   
 </body>
 
