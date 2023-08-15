@@ -126,6 +126,18 @@
   max-width: 30%;
   height: auto; 
 }
+     .description-container {
+      margin: 20px; 
+    }
+    
+    .data-source-link {
+      display: block;
+      margin-top: 5px; 
+    }
+    
+    .link-choice {
+      margin-top: 10px; 
+    }
     
   </style>
 
@@ -476,7 +488,7 @@
 
   </script>
 
-    <div class="map-container">
+   <div class="map-container">
     <div id="map1"></div>
     <div class="description-container">
       <div class="map-description">
@@ -493,12 +505,11 @@
         <a href="https://www.ibge.gov.br/apps/basescartograficas/#/home" target="_blank" class="data-source-link">Go to Data Source!</a>
         <p>With this map, I aimed to see if there were links between socioeconomic vulnerability, historical marginalization, and the location of energy infrastructure.</p>
         <p>Do you see any links?</p>
-        <button class="link-choice" id="see-links-yes">Yep, I see links</button>
-        <button class="link-choice" id="see-links-no">Nope, no links</button>
+        <label><input type="checkbox" id="see-links-yes"> Yep, I see links</label>
+        <label><input type="checkbox" id="see-links-no"> Nope, no links</label>
       </div>
     </div>
   </div>
-
 
    <style> 
         .embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} 
