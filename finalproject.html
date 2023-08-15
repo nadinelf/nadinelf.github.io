@@ -353,11 +353,12 @@
 
       L.control.layers(baseMaps).addTo(map);
 
-      markers.addLayer(L.marker(getRandomLatLng(map)));
-      map.addLayer(markers);
 
       var response;
-
+      
+ markers.addLayer(L.marker(getRandomLatLng(map)));
+      map.addLayer(markers);
+      
       response = $.ajax({
         url: "hidro.geojson",
         dataType: "json",
