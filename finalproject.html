@@ -123,25 +123,24 @@
       margin-top: 10px; 
     }
 
-
      .map-description {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 100%;
-      padding: 10px;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
 
-    .map-description p {
-      margin: 0;
-    }
 
-    .embed-container {
-      position: relative;
-      width: 60%;
-      max-width: 800px;
-      margin: 0;
-    }
+   .embed-container {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
 
     .embed-container iframe {
       position: absolute;
@@ -543,9 +542,10 @@
               -55.3875,180,80.236&zoom=true&previewImage=false&scale=true&legendlayers=true&disable_scroll=true&theme=light"></iframe></div>
     }
   </div>
+   <div class="map-description">
     <p>In this map, you can see two layers: Energy Use by country (Feature layer by Maps.com_carto), in blue, and Construction of Large Dams (Source: Feature layer by tboucher), in green dots. In both cases, darker color represents higher intensity (darker blue: higher energy use; darker green: more dams). Here, you can see how countries in North use more energy, and that the South produces more energy. Why is this an issue?</p>
     <p>Well, because of a larger trend called "Ecological imperialism," in which countries of the North extract the natural resources of the South (Fernandes, 2020). It is often the case that energy produced in developing countries is sold to developed ones, and, sometimes, even the owners of the producing companies are from the developed world! Of course that dams are not the only type of energy, but you can definitely see a trend here.</p>
-  </div>
+   </div> </div>
 </div>
   
 </body>
