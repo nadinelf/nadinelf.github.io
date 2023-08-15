@@ -13,6 +13,10 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+  <link rel="stylesheet" href="MarkerCluster.css'> 
+  <link rel="stylesheet" href="/MarkerCluster.Default.css"> 
+  <script src="leaflet.markercluster.js"></script>
+
   <style>
       body {
       font-family: "Times New Roman", Times, serif;
@@ -304,6 +308,8 @@
     var hidroVisible = false;
     var termoVisible = false;
     var edifVisible = false;
+    var markers = L.markerClusterGroup();
+
 
     var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       maxZoom: 10,
@@ -336,6 +342,9 @@
       };
 
       L.control.layers(baseMaps).addTo(map);
+
+      markers.addLayer(L.marker(getRandomLatLng(map)));
+map.addLayer(markers);
 
       var response;
 
