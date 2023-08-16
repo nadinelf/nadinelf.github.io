@@ -146,11 +146,9 @@
     <div class="button-container">
       <button id="toggleVulnerabilidade" class="toggle-button vulnerabilidade" hidden>Toggle the Vulnerability Layer</button>
       <button id="toggleQuilombola" class="toggle-button quilombola" hidden>Toggle the Quilombola Layer</button>
-      <button id="toggleHidro" class="toggle-button" hidden>Toggle the Hydropower Layer</button>
       <button id="toggleEdif" class="toggle-button">Toggle the Edif Layer</button>
       <button id="toggleTermo" class="toggle-button">Toggle the Termo Layer</button>
-     <button id="toggleCluster" class="toggle-button">Toggle Marker Clustering</button>
-
+     <button id="toggleCluster" class="toggle-button">Toggle the Hydropower Layer</button>
     </div>
   </div>
 
@@ -241,16 +239,6 @@
           }
         });
 
-    $("#toggleHidro").show();
-    $("#toggleHidro").click(function () {
-      if (hidroVisible) {
-        hidroVisible = false;
-        map.removeLayer(hidroCluster); // Remove the hidroCluster layer instead of hidroLayer
-      } else {
-        hidroVisible = true;
-        map.addLayer(hidroCluster); // Add the hidroCluster layer instead of hidroLayer
-      }
-    });
   },
   error: function (xhr) {
     alert(xhr.statusText);
