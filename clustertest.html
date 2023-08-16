@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Energy in Brazil</title>
+
+   <!-- Include Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <!-- Include Leaflet.markercluster CSS -->
+  <link rel="stylesheet" href="MarkerCluster.css">
+  <link rel="stylesheet" href="MarkerCluster.Default.css">
+
+  <!-- Include Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-mH9Ui/15Qmzy3T2F5ijmEIsZmtrHvAgF8uvokM3gJZvWiLTv6JX8lGtohDfAAw2U6fdF1kpyXTjb53DgC/BfKQ=="
+    crossorigin="anonymous" />
+
+  <!-- Include jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Include Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Include your page style -->
+  <link rel="stylesheet" href="stylefp.css">
+</head>
+
+<body>
+  <script>
+    window.onload = function () {
+      alert("You are about to learn about energy injustice in Brazil!\n\np.s.: geog 50.02 is the best class ever!");
+    };
+  </script>
+
+  <h1 style="background-color: #99c2ff;">
+    <a href="https://youtu.be/5AIW7j_Xjc4" target="_blank" rel="noopener noreferrer">
+      Energy in <span style="cursor: pointer;">Brazil</span>
+    </a>
+  </h1>
+
+  <div class="container">
+    <p>
+      Imagine you have a super bouncy ball. When you throw it on the ground, it bounces back up, right? That
+      bouncing action is like energy. Energy is a special invisible thing that helps things happen and makes them move.
+      Just like how the bouncy ball has the power to bounce, everything around us, like toys, cars, and even our own
+      bodies, has its own kind of energy that makes it work and move.
+    </p>
+  </div>
+
+  <div class="container">
+    <p>
+      Hydropower energy is like using the power of water to make things work. Imagine a big waterfall with water rushing
+      down really fast. People can put special machines in the water that use its energy to spin around, just like a
+      water wheel or a spinning top. So, hydropower is like having a super fun
+      and strong friend, water, that helps us make electricity by playing and spinning around!
+    </p>
+    <p>In Brazil, while big dams like the <span class="tooltip-container">
+        <span class="tooltip-content">
+          <img src="belomonte.jpeg" alt="Belo Monte">
+        </span>
+        <span class="tooltip">Belo Monte</span></span>
+      and <span class="tooltip-container">
+        <span class="tooltip-content">
+          <img src="Itaipu.jpeg" alt="Itaipu">
+        </span>
+        <span class="tooltip">Itaipu</span></span> brought power to cities and industries, they've also caused problems.
+      Indigenous communities have faced displacement from their lands, leading to cultural and social disruptions. The dams
+      can harm the Amazon rainforest, disrupting the natural flow of rivers and impacting local plants and animals. Sometimes,
+      the benefits of this energy don't reach everyone equally, with rural and marginalized communities often left with the
+      negative effects while others reap the rewards.
+    </p>
+  </div>
+
+  <div id="hangman-game" style="margin: 20px;">
+    <h3>Hangman Game: How do we call big projects that harm marginalized communities?</h3>
+    <div>
+      <p>You have <span id="numleft">15</span> chances left.</p>
+    </div>
+    <div>
+      <p>The word to guess is <span id="word" style="font-weight:bold;"></span></p>
+    </div>
+    <div>
+      <p>Click on a letter to make a guess!</p>
+      <p>
+        <span class="letter" id="i">i</span>
+        <span class="letter" id="n">n</span>
+        <span class="letter" id="j">j</span>
+        <span class="letter" id="u">u</span>
+        <span class="letter" id="s">s</span>
+        <span class="letter" id="t">t</span>
+        <span class="letter" id="c">c</span>
+        <span class="letter" id="e">e</span>
+      </p>
+    </div>
+    <div id="error_msg" style="color:red;"></div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      var total_guesses = 15;
+      var word = "injustice";
+      var blanks = "_".repeat(word.length);
+      var guesses = "";
+      $("#word").html(blanks);
+
+      $(".letter").click(function () {
+        var id = $(this).attr('id');
+
+        if (guesses.includes(id)) {
+          $("#error_msg").html("You already guessed " + id);
+        } else {
+          guesses = guesses + id;
+          $("#" + id).css('text-decoration', 'line-through');
+          total_guesses = total_guesses - 1;
+          if (total_guesses < 0) {
+            $("#error_msg").html("You are out of guesses. You lose! It is not 'development'; it's 'injustice!'");
+          } else {
+            $("#numleft").html(total_guesses);
+            if (word.includes(id)) {
+              var indices = [];
+              for (var i = 0; i < word.length; i++) {
+                if (word[i] === id) {
+                  indices.push(i);
+                }
+              }
+              for (var i = 0; i < indices.length; i++) {
+                var index = indices[i];
+                blanks = blanks.substr(0, index) + id + blanks.substr(index + 1);
+              }
+              $("#word").html(blanks);
+              if (blanks === word) {
+                $("#error_msg").text("You win, but we all lose! It's an injustice indeed");
+              }
+            }
+          }
+        }
+      });
+    });
+  </script>
+
+  <div class="map-container">
+    <div id="map1"></div>
+    <div class="button-container">
+      <button id="toggleVulnerabilidade" class="toggle-button vulnerabilidade" hidden>Toggle the Vulnerability Layer</button>
+      <button id="toggleQuilombola" class="toggle-button quilombola" hidden>Toggle the Quilombola Layer</button>
+      <button id="toggleHidro" class="toggle-button" hidden>Toggle the Hydropower Layer</button>
+      <button id="toggleEdif" class="toggle-button">Toggle the Edif Layer</button>
+      <button id="toggleTermo" class="toggle-button">Toggle the Termo Layer</button>
+     <button id="toggleCluster" class="toggle-button">Toggle Marker Clustering</button>
+
+    </div>
+  </div>
+
+    <!-- Include Leaflet.markercluster JS -->
+  <script src="path_to_leaflet.markercluster/leaflet.markercluster.js"></script>
+
+  <script src="brasilvulnerabilidade.geojson"></script>
+  <script src="areasquilombola.geojson"></script>
+  <script src="hidro.geojson"></script>
+  <script src="edif.geojson"></script>
+  <script src="termo.geojson"></script>
+  <script src="trechocom.geojson"></script>
+  <script src="trechoen.geojson"></script>
+
+  <script>
+    var vulnerabilidadeLayer;
+    var quilombolaLayer;
+    var hidroLayer;
+    var termoLayer;
+    var trechocomLayer;
+    var trechoenLayer;
+    var edifLayer;
+    var vulnerabilidadeVisible = false;
+    var quilombolaVisible = false;
+    var hidroVisible = false;
+    var termoVisible = false;
+    var edifVisible = false;
+
+    var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      maxZoom: 10,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
+        'Tiles courtesy of <a href="http://www.hot.osm.org">HOT OSM</a>'
+    });
+
+    function initialize() {
+      // Define the bounds of Brazil
+      var brazilBounds = L.latLngBounds(
+        L.latLng(-33.742000, -73.985000), // Southwest coordinates of Brazil
+        L.latLng(5.272000, -34.793000) // Northeast coordinates of Brazil
+      );
+
+      var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        maxZoom: 17,
+        attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+      });
+
+      var map = L.map('map1', {
+        center: brazilBounds.getCenter(),
+        zoom: 4,
+        maxBounds: brazilBounds, // Restrict panning to Brazil bounds
+        layers: [OpenStreetMap_HOT]
+      });
+
+      var baseMaps = {
+        "OpenStreetMap": OpenStreetMap_HOT,
+        "OpenTopoMap": OpenTopoMap
+      };
+
+      L.control.layers(baseMaps).addTo(map);
+
+      var response;
+  response = $.ajax({
+        url: "hidro.geojson",
+        dataType: "json",
+        success: function (data) {
+          console.log("Hydropower data loaded");
+          hidroLayer = L.geoJSON(data, {
+            pointToLayer: function (feature, latlng) {
+              return L.marker(latlng, {
+                icon: L.icon({
+                  iconUrl: "bluedot.png",
+                  iconSize: [5, 8],
+            
+                })
+              });
+            },
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
+                "Is it operating? " + feature.properties.operaciona);
+            }
+          });
+          markers.addLayer(hidroLayer); // Add the layer to the marker cluster group
+          map.addLayer(markers); // Add the marker cluster group to the map
+
+             // Toggle marker clustering
+      $("#toggleCluster").click(function () {
+        if (map.hasLayer(markers)) {
+          map.removeLayer(markers);
+        } else {
+          map.addLayer(markers);
+        }
+      });
+
+          $("#toggleHidro").show();
+          $("#toggleHidro").click(function () {
+            if (hidroVisible) {
+              hidroVisible = false;
+              hidroLayer.removeFrom(map);
+            } else {
+              hidroVisible = true;
+              hidroLayer.addTo(map);
+            }
+          });
+        },
+        error: function (xhr) {
+          alert(xhr.statusText);
+        }
+      });
+      response = $.ajax({
+        url: "edif.geojson",
+        dataType: "json",
+        success: function (data) {
+          console.log("Edif data loaded");
+          edifLayer = L.geoJSON(data, {
+            pointToLayer: function (feature, latlng) {
+              return L.marker(latlng, {
+                icon: L.icon({
+                  iconUrl: "edificon.png",
+                  iconSize: [25, 41],
+                })
+              });
+            },
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
+                "Is it operating? " + feature.properties.operaciona);
+            }
+          });
+
+          $("#toggleEdif").show();
+          $("#toggleEdif").click(function () {
+            if (edifVisible) {
+              edifVisible = false;
+              edifLayer.removeFrom(map);
+            } else {
+              edifVisible = true;
+              edifLayer.addTo(map);
+            }
+          });
+        }
+      });
+
+      response = $.ajax({
+        url: "termo.geojson",
+        dataType: "json",
+        success: function (data) {
+          console.log("Termo data loaded");
+          termoLayer = L.geoJSON(data, {
+            pointToLayer: function (feature, latlng) {
+              return L.marker(latlng, {
+                icon: L.icon({
+                  iconUrl: "termoicon.png",
+                  iconSize: [25, 41],
+                })
+              });
+            },
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
+                "Is it operating? " + feature.properties.operaciona);
+            }
+          });
+
+          $("#toggleTermo").show();
+          $("#toggleTermo").click(function () {
+            if (termoVisible) {
+              termoVisible = false;
+              termoLayer.removeFrom(map);
+            } else {
+              termoVisible = true;
+              termoLayer.addTo(map);
+            }
+          });
+        }
+      });
+
+      response = $.ajax({
+        url: "areasquilombola.geojson",
+        dataType: "json",
+        success: function (data) {
+          console.log("Quilombola data loaded");
+          quilombolaLayer = L.geoJSON(data, {
+            style: {
+              color: "brown",
+              fillOpacity: 0.5,
+            }
+          });
+
+          $("#toggleQuilombola").show();
+          $("#toggleQuilombola").click(function () {
+            if (quilombolaVisible) {
+              quilombolaVisible = false;
+              quilombolaLayer.removeFrom(map);
+            } else {
+              quilombolaVisible = true;
+              quilombolaLayer.addTo(map);
+            }
+          });
+        }
+      });
+
+      response = $.ajax({
+        url: "brasilvulnerabilidade.geojson",
+        dataType: "json",
+        success: function (data) {
+          console.log("Vulnerabilidade data loaded");
+          vulnerabilidadeLayer = L.geoJSON(data, {
+            style: {
+              color: "green",
+              fillOpacity: 0.5,
+            }
+          });
+
+          $("#toggleVulnerabilidade").show();
+          $("#toggleVulnerabilidade").click(function () {
+            if (vulnerabilidadeVisible) {
+              vulnerabilidadeVisible = false;
+              vulnerabilidadeLayer.removeFrom(map);
+            } else {
+              vulnerabilidadeVisible = true;
+              vulnerabilidadeLayer.addTo(map);
+            }
+          });
+        }
+      });
+    }
+
+    initialize();
+  </script>
+
+  <div class="map-description">
+    <img src="brazilian_flag.png" alt="Brazilian Flag" style="width: 30px; margin-right: 10px;">
+    <p>This map is made of data from some cool Brazilian institutions.</p>
+    <p><strong>Vulnerability</strong> here refers to flood vulnerability in Brazil, with data on segments of flood-prone watercourses with attributes of occurrence frequency, degree of impact, and susceptibility to gradual flooding. The data is from ANA, the national water agency.</p>
+    <a href="https://metadados.snirh.gov.br/geonetwork/srv/por/catalog.search#/metadata/2cfa808b-b370-43ef-8107-5c3bfd7acf9c" target="_blank" class="data-source-link">Go to Data Source!</a>
+    <p><strong>Quilombola territory</strong> is a land area historically inhabited by descendants of Afro-Brazilian runaway slaves. The data is from INCRA, the National Institute of Colonization and Agrarian Reform.</p>
+    <a href="https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/quilombolas#:~:text=Por%20for%C3%A7a%20do%20Decreto%20n%C2%BA,%2C%20social%2C%20econ%C3%B4mica%20e%20cultural." target="_blank" class="data-source-link">Go to Data Source!</a>
+    <p>The other three layers are from IBGE, the Brazilian Institute of Geography and Statistics. It is the main provider of data and information for the country. With data from 2017, the layers cover:</p>
+    <p><strong>Edif:</strong> Building component of an energy generation, transmission, and/or distribution system.</p>
+    <p><strong>Hydropower:</strong> Architectural complex aimed at producing electric energy through the utilization of the hydraulic potential existing in a river, hydroelectric power station.</p>
+    <p><strong>Termo:</strong> Electric energy generation system where the operational principle is the thermodynamic cycle of steam and/or gas.</p>
+    <a href="https://downloads.ibge.gov.br/downloads_geociencias.htm" target="_blank" class="data-source-link">Go to Data Source!</a>
+  </div>
+
+   <div class="embed-container"><iframe frameborder="0" scrolling="no"  marginheight="0" marginwidth="0" title="Energy use x large dams construction" 
+            src="//dartmouth.maps.arcgis.com/apps/Embed/index.html?webmap=43327c892dd14ed492cf8e48c2736337&extent=-180,
+              -55.3875,180,80.236&zoom=true&previewImage=false&scale=true&legendlayers=true&disable_scroll=true&theme=light"></iframe></div>
+  
+   <div class="map-description">
+    <p>In this map, you can see two layers: Energy Use by country (Feature layer by Maps.com_carto), in blue, and Construction of Large Dams (Source: Feature layer by tboucher), in green dots. In both cases, darker color represents higher intensity (darker blue: higher energy use; darker green: more dams). Here, you can see how countries in North use more energy, and that the South produces more energy. Why is this an issue?</p>
+    <p>Well, because of a larger trend called "Ecological imperialism," in which countries of the North extract the natural resources of the South (Fernandes, 2020). It is often the case that energy produced in developing countries is sold to developed ones, and, sometimes, even the owners of the producing companies are from the developed world! Of course that dams are not the only type of energy, but you can definitely see a trend here.</p>
+   </div> </div>
+</div>
+
+  <div class="container">
+    <h2>References</h2>
+    <p>[1] Kids Discover. (2023). What is Energy? Kids Discover.</p>
+    <p>[2] World Wildlife Fund. (2023). The Energy Story - Chapter 3: Conventional Energy. Kids.Mongabay.com.</p>
+  </div>
+</body>
+
+</html>
