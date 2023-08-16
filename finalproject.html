@@ -226,7 +226,8 @@ response = $.ajax({
   }
 });
 
-    hidroLayer = L.geoJSON(data, {
+    hidroLayer = L.markerClusterGroup();
+L.geoJSON(data, {
       pointToLayer: function (feature, latlng) {
         return L.marker(latlng, {
           icon: L.icon({
@@ -239,7 +240,8 @@ response = $.ajax({
         layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
           "Is it operating? " + feature.properties.operaciona);
       }
-    });
+  
+}).addTo(hidroLayer);
 
     markers.addLayer(hidroLayer);
 
