@@ -13,9 +13,7 @@
   <link rel="stylesheet" href="MarkerCluster.Default.css">
 
   <!-- Include Font Awesome CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    integrity="sha512-mH9Ui/15Qmzy3T2F5ijmEIsZmtrHvAgF8uvokM3gJZvWiLTv6JX8lGtohDfAAw2U6fdF1kpyXTjb53DgC/BfKQ=="
-    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
   <!-- Include jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -212,6 +210,8 @@
       L.control.layers(baseMaps).addTo(map);
 
       var response;
+      var markers = L.markerClusterGroup();
+
   response = $.ajax({
         url: "hidro.geojson",
         dataType: "json",
@@ -226,14 +226,13 @@
             
                 })
               });
+              markers.addLayer(hidroLayer);
             },
             onEachFeature: function (feature, layer) {
               layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
           });
-          markers.addLayer(hidroLayer); // Add the layer to the marker cluster group
-          map.addLayer(markers); // Add the marker cluster group to the map
 
              // Toggle marker clustering
       $("#toggleCluster").click(function () {
