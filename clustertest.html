@@ -445,18 +445,66 @@
   <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Energy use x large dams construction" 
           src="//dartmouth.maps.arcgis.com/apps/Embed/index.html?webmap=43327c892dd14ed492cf8e48c2736337&extent=-180,
             -55.3875,180,80.236&zoom=true&previewImage=false&scale=true&legendlayers=true&disable_scroll=true&theme=light">
-  </iframe></div>
+  </iframe>
+</div>
 <div class="map-description">
   <p>In this map, you can see two layers: Energy Use by country (Feature layer by Maps.com_carto), in blue, and Construction of Large Dams (Source: Feature layer by tboucher), in green dots. In both cases, darker color represents higher intensity (darker blue: higher energy use; darker green: more dams). Here, you can see how countries in North use more energy, and that the South produces more energy. Why is this an issue?</p>
   <p>Well, because of a larger trend called "Ecological imperialism," in which countries of the North extract the natural resources of the South (Fernandes, 2020). It is often the case that energy produced in developing countries is sold to developed ones, and, sometimes, even the owners of the producing companies are from the developed world! Of course that dams are not the only type of energy, but you can definitely see a trend here.</p>
 </div>
+
+
+  <div class="container">
+  <h2>Comments and Feedback</h2>
+  <div class="comments-container">
+    <div class="comment-form">
+      <h3>Leave a Comment</h3>
+      <form id="commentForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="comment">Comment:</label><br>
+        <textarea id="comment" name="comment" rows="4" required></textarea><br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <div class="comment-list">
+      <h3>Comments</h3>
+      <ul id="commentList">
+        <!-- Comments will be added dynamically here -->
+      </ul>
+    </div>
+  </div>
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const commentForm = document.getElementById("commentForm");
+    const commentList = document.getElementById("commentList");
+
+    commentForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const comment = document.getElementById("comment").value;
+
+      if (name && comment) {
+        const commentItem = document.createElement("li");
+        commentItem.innerHTML = `<strong>${name}</strong>: ${comment}`;
+        commentList.appendChild(commentItem);
+
+        // Clear form fields
+        commentForm.reset();
+      }
+    });
+  });
+</script>
+
+  
   <div class="container">
     <h2>References</h2>
     <p>[1] Kids Discover. (2023). What is Energy? Kids Discover.</p>
     <p>[2] World Wildlife Fund. (2023). The Energy Story - Chapter 3: Conventional Energy. Kids.Mongabay.com.</p>
   </div>
+
 
 
 </body>
