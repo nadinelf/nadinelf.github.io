@@ -383,6 +383,64 @@
     <a href="https://downloads.ibge.gov.br/downloads_geociencias.htm" target="_blank" class="data-source-link">Go to Data Source!</a>
   </div>
 
+ <div class="container">
+  <h2>Main events of the Brazilian energy grid development</h2>
+  <div class="timeline-container">
+    <div class="timeline">
+      <div class="event" data-year="1883">
+        <h3>1883</h3>
+        <p>In Diamantina (MG), the first hydroelectric power plant came into operation at Ribeirão do Inferno.</p>
+      </div>
+      <div class="event" data-year="1954">
+        <h3>1954</h3>
+        <p>President Getúlio Vargas sent the bill for the creation of Centrais Elétricas Brasileiras (Eletrobras) to Congress.</p>
+      </div>
+      <div class="event" data-year="1974">
+        <h3>1974</h3>
+        <p>The Itaipu Binacional was established as a binational company responsible for the construction and operation of the Itaipu Hydroelectric Power Plant, one of the largest hydroelectric power plants in the world.</p>
+      </div>
+      <div class="event" data-year="2003">
+        <h3>2003</h3>
+        <p>The Programa Luz para Todos (Light for All Program) was established to provide electricity to 2.1 million families living in rural areas without access to electric lighting.</p>
+      </div>
+      <div class="event" data-year="2018">
+        <h3>2018</h3>
+        <p>President Temer signed a bill for the privatization of Eletrobras, and, a year later, President Jair Bolsonaro actualized it. Now, the biggest electric energy company of Latin America is privatized, and Brazilians are suffering the consequences.</p>
+      </div>
+    </div>
+    <div class="timeline-navigation">
+      <button id="prev">Previous</button>
+      <button id="next">Next</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const events = document.querySelectorAll(".event");
+    let currentIndex = 0;
+
+    function showEvent(index) {
+      events.forEach((event, i) => {
+        event.style.display = i === index ? "block" : "none";
+      });
+    }
+
+    document.getElementById("prev").addEventListener("click", function () {
+      currentIndex = Math.max(currentIndex - 1, 0);
+      showEvent(currentIndex);
+    });
+
+    document.getElementById("next").addEventListener("click", function () {
+      currentIndex = Math.min(currentIndex + 1, events.length - 1);
+      showEvent(currentIndex);
+    });
+
+    showEvent(currentIndex);
+  });
+</script>
+  
+
 <div class="embed-container">
   <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Energy use x large dams construction" 
           src="//dartmouth.maps.arcgis.com/apps/Embed/index.html?webmap=43327c892dd14ed492cf8e48c2736337&extent=-180,
@@ -399,6 +457,8 @@
     <p>[1] Kids Discover. (2023). What is Energy? Kids Discover.</p>
     <p>[2] World Wildlife Fund. (2023). The Energy Story - Chapter 3: Conventional Energy. Kids.Mongabay.com.</p>
   </div>
+
+
 </body>
 
 </html>
