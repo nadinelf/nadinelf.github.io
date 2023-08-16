@@ -229,7 +229,7 @@
       }
     });
 
-      markers.addLayer(hidroLayer); // Add the hydropower layer to marker cluster
+      markers.addLayer(hidroLayer); 
 
         $("#toggleCluster").click(function () {
           if (map.hasLayer(markers)) {
@@ -266,16 +266,16 @@
             }
           });
 
-          $("#toggleEdif").show();
-          $("#toggleEdif").click(function () {
-            if (edifVisible) {
-              edifVisible = false;
-              edifLayer.removeFrom(map);
-            } else {
-              edifVisible = true;
-              edifLayer.addTo(map);
-            }
-          });
+                markers.addLayer(edifLayer); 
+
+        $("#toggleEdif").click(function () {
+          if (map.hasLayer(markers)) {
+            map.removeLayer(markers);
+          } else {
+            map.addLayer(markers);
+          }
+        });
+
         }
       });
 
