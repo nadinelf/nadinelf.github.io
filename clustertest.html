@@ -213,51 +213,55 @@
       var markers = L.markerClusterGroup();
 
   response = $.ajax({
-        url: "hidro.geojson",
-        dataType: "json",
-        success: function (data) {
-          console.log("Hydropower data loaded");
-          hidroLayer = L.geoJSON(data, {
-            pointToLayer: function (feature, latlng) {
-              return L.marker(latlng, {
-                icon: L.icon({
-                  iconUrl: "bluedot.png",
-                  iconSize: [5, 8],
-            
-                })
-              });
-              markers.addLayer(hidroLayer);
-            },
-            onEachFeature: function (feature, layer) {
-              layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
-                "Is it operating? " + feature.properties.operaciona);
-            }
-          });
+  url: "hidro.geojson",
+  dataType: "json",
+  success: function (data) {
+    console.log("Hydropower data loaded");
+    hidroLayer = L.geoJSON(data, {
+      pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, {
+          icon: L.icon({
+            iconUrl: "bluedot.png",
+            iconSize: [5, 8],
+          })
+        });
+      },
+      onEachFeature: function (feature, layer) {
+        layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
+          "Is it operating? " + feature.properties.operaciona);
+      }
+    });
 
-             // Toggle marker clustering
-      $("#toggleCluster").click(function () {
-        if (map.hasLayer(markers)) {
-          map.removeLayer(markers);
-        } else {
-          map.addLayer(markers);
-        }
-      });
+    // Create a marker cluster group and add the hidroLayer to it
+    var hidroCluster = L.markerClusterGroup();
+    hidroCluster.addLayer(hidroLayer);
 
-          $("#toggleHidro").show();
-          $("#toggleHidro").click(function () {
-            if (hidroVisible) {
-              hidroVisible = false;
-              hidroLayer.removeFrom(map);
-            } else {
-              hidroVisible = true;
-              hidroLayer.addTo(map);
-            }
-          });
-        },
-        error: function (xhr) {
-          alert(xhr.statusText);
-        }
-      });
+    // Toggle marker clustering
+    $("#toggleCluster").click(function () {
+      if (map.hasLayer(hidroCluster)) {
+        map.removeLayer(hidroCluster);
+      } else {
+        map.addLayer(hidroCluster);
+      }
+    });
+
+    $("#toggleHidro").show();
+    $("#toggleHidro").click(function () {
+      if (hidroVisible) {
+        hidroVisible = false;
+        map.removeLayer(hidroCluster); // Remove the hidroCluster layer instead of hidroLayer
+      } else {
+        hidroVisible = true;
+        map.addLayer(hidroCluster); // Add the hidroCluster layer instead of hidroLayer
+      }
+    });
+  },
+  error: function (xhr) {
+    alert(xhr.statusText);
+  }
+});
+
+      
       response = $.ajax({
         url: "edif.geojson",
         dataType: "json",
