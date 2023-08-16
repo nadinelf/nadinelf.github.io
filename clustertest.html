@@ -245,7 +245,7 @@
   }
 });
 
-      
+            var markers2 = L.markerClusterGroup();
       response = $.ajax({
         url: "edif.geojson",
         dataType: "json",
@@ -266,13 +266,13 @@
             }
           });
 
-                markers.addLayer(edifLayer); 
+                markers2.addLayer(edifLayer); 
 
         $("#toggleEdif").click(function () {
-          if (map.hasLayer(markers)) {
-            map.removeLayer(markers);
+          if (map.hasLayer(markers2)) {
+            map.removeLayer(markers2);
           } else {
-            map.addLayer(markers);
+            map.addLayer(markers2);
           }
         });
 
