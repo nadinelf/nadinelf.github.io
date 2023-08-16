@@ -4,21 +4,29 @@
 <head>
   <title>Energy in Brazil</title>
 
-  <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"
+ <!-- Load Leaflet 1.9.4 -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-VazPruWgUAiJqD2Gae1Fpf046OskAdNV0K8t+ds90/M=" crossorigin=""></script>
+
+<!-- Load Leaflet.MarkerCluster 1.4.1 -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" /> 
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<!-- Leaflet.markercluster -->
-<script src="https://unpkg.com/leaflet.markercluster@1.9.1/dist/leaflet.markercluster.js"></script>
-
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css">
-
-  <!-- Font Awesome -->
+ <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
+  
+<script>
+  // Use L.noConflict() to store the original Leaflet version and then create a new namespace for the older version
+  var originalLeaflet = L;
+  var leaflet1_4_1 = L.noConflict();
+  
+  // Load the newer version of Leaflet
+  var leaflet1_9_4 = L;
+ 
 
   <style>
     body {
