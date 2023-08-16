@@ -343,47 +343,51 @@
 
       var response;
 
-         response = $.ajax({
-        url: "hidro.geojson",
-        dataType: "json",
-        success: function (data) {
-          console.log("Hydropower data loaded");
-          var markers = L.markerClusterGroup({
-            iconCreateFunction: function (cluster) {
-              return L.divIcon({ html: '<b>' + cluster.getChildCount() + '</b>' });
-            }
-          });
-          
-          hidroLayer = L.geoJSON(data, {
-            pointToLayer: function (feature, latlng) {
-              return L.marker(latlng);  // Remove the 'icon' option here
-            },
-            onEachFeature: function (feature, layer) {
-              layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
-                "Is it operating? " + feature.properties.operaciona);
-            }
-          });
+response = $.ajax({
+  url: "hidro.geojson",
+  dataType: "json",
+  success: function (data) {
+    console.log("Hydropower data loaded");
+    var markers = L.markerClusterGroup({
+      iconCreateFunction: function (cluster) {
+        return L.divIcon({ html: '<b>' + cluster.getChildCount() + '</b>' });
+      }
+    });
 
-          markers.addLayer(hidroLayer);
+    hidroLayer = L.geoJSON(data, {
+      pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, {
+          icon: L.icon({
+            iconUrl: 'hydropower.png',
+            iconSize: [25, 25]
+          })
+        });
+      },
+      onEachFeature: function (feature, layer) {
+        layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
+          "Is it operating? " + feature.properties.operaciona);
+      }
+    });
 
-          $("#toggleHidro").show();
-          $("#toggleHidro").click(function () {
-            if (hidroVisible) {
-              hidroVisible = false;
-              hidroLayer.removeFrom(map);
-              markers.addTo(map);
-            } else {
-              hidroVisible = true;
-              hidroLayer.addTo(map);
-              markers.removeFrom(map);
-            }
-          });
-        },
-        error: function (xhr) {
-          alert(xhr.statusText);
-        }
-      });
+    markers.addLayer(hidroLayer);
 
+    $("#toggleHidro").show();
+    $("#toggleHidro").click(function () {
+      if (hidroVisible) {
+        hidroVisible = false;
+        hidroLayer.removeFrom(map);
+        markers.addTo(map);
+      } else {
+        hidroVisible = true;
+        hidroLayer.addTo(map);
+        markers.removeFrom(map);
+      }
+    });
+  },
+  error: function (xhr) {
+    alert(xhr.statusText);
+  }
+});
       response = $.ajax({
         url: "edif.geojson",
         dataType: "json",
