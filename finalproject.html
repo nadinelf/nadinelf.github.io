@@ -5,26 +5,24 @@
   <title>Energy in Brazil</title>
 
   <!-- Leaflet CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.1/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.1/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.4.1/dist/leaflet.js"
-  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.4.1/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-<link rel="stylesheet" href="MarkerCluster.css"> 
-  <link rel="stylesheet" href="MarkerCluster.Default.css"> 
+  <link rel="stylesheet" href="MarkerCluster.css">
   <script src="leaflet.markercluster.js"></script>
 
-    <!-- Font Awesome -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-
   <style>
-      body {
+    body {
       font-family: "Times New Roman", Times, serif;
       margin: 0;
       padding: 0;
@@ -42,7 +40,7 @@
 
     h1 {
       text-align: center;
-      background-color: #66a3ff; 
+      background-color: #66a3ff;
       color: #fff;
       padding: 15px;
       margin: 0;
@@ -74,16 +72,13 @@
       background-color: #66a3ff; /* Lighter shade of blue */
       color: white;
     }
-    
+
     .container {
       text-align: center;
     }
 
-   
-    
-     //Tooltip styles
- 
-  .tooltip-container {
+    /* Tooltip styles */
+    .tooltip-container {
       position: relative;
     }
 
@@ -108,7 +103,7 @@
       visibility: hidden;
       opacity: 0;
       transition: opacity 0.3s, visibility 0.3s;
-       max-width: 150px;
+      max-width: 150px;
     }
 
     .tooltip-container:hover .tooltip-content {
@@ -117,40 +112,39 @@
     }
 
     .tooltip-content img {
-  max-width: 30%;
-  height: auto; 
-}
-     .description-container {
-      margin: 20px; 
+      max-width: 30%;
+      height: auto;
     }
-    
+
+    .description-container {
+      margin: 20px;
+    }
+
     .data-source-link {
       display: block;
-      margin-top: 5px; 
+      margin-top: 5px;
     }
-    
+
     .link-choice {
-      margin-top: 10px; 
+      margin-top: 10px;
     }
 
-     .map-description {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-}
+    .map-description {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
 
-
-   .embed-container {
-  width: 100%;
-  max-width: 800px;
-  margin-top: 20px;
-}
-
+    .embed-container {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 20px;
+    }
 
     .embed-container iframe {
       position: absolute;
@@ -163,8 +157,6 @@
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
   </style>
-  
-  </style>
 
 </head>
 
@@ -174,22 +166,22 @@
       alert("You are about to learn about energy injustice in Brazil!\n\np.s.: geog 50.02 is the best class ever!");
     };
   </script>
-  
- <h1 style="background-color: #99c2ff;">
-   <a href="https://youtu.be/5AIW7j_Xjc4" target="_blank" rel="noopener noreferrer">
-    Energy in <span style="cursor: pointer;">Brazil</span>
-  </a></h1>
-  
-  <div class="container">
 
+  <h1 style="background-color: #99c2ff;">
+    <a href="https://youtu.be/5AIW7j_Xjc4" target="_blank" rel="noopener noreferrer">
+      Energy in <span style="cursor: pointer;">Brazil</span>
+    </a>
+  </h1>
+
+  <div class="container">
     <p>
       Imagine you have a super bouncy ball. When you throw it on the ground, it bounces back up, right? That
       bouncing action is like energy. Energy is a special invisible thing that helps things happen and makes them move.
       Just like how the bouncy ball has the power to bounce, everything around us, like toys, cars, and even our own
-      bodies, has its own kind of energy that makes it work and move. 
+      bodies, has its own kind of energy that makes it work and move.
     </p>
   </div>
-  
+
   <div class="container">
     <p>
       Hydropower energy is like using the power of water to make things work. Imagine a big waterfall with water rushing
@@ -197,7 +189,7 @@
       water wheel or a spinning top. So, hydropower is like having a super fun
       and strong friend, water, that helps us make electricity by playing and spinning around!
     </p>
-     <p>In Brazil, while big dams like the <span class="tooltip-container">
+    <p>In Brazil, while big dams like the <span class="tooltip-container">
         <span class="tooltip-content">
           <img src="belomonte.jpeg" alt="Belo Monte">
         </span>
@@ -206,83 +198,85 @@
         <span class="tooltip-content">
           <img src="Itaipu.jpeg" alt="Itaipu">
         </span>
-        <span class="tooltip">Itaipu</span></span> brought power to cities and industries, they've also caused problems. Indigenous communities have faced displacement
-      from their lands, leading to cultural and social disruptions. The dams can harm the Amazon rainforest, disrupting the natural flow of 
-      rivers and impacting local plants and animals. Sometimes, the benefits of this energy don't reach everyone equally, with rural and 
-      marginalized communities often left with the negative effects while others reap the rewards.</p>
+        <span class="tooltip">Itaipu</span></span> brought power to cities and industries, they've also caused problems.
+      Indigenous communities have faced displacement from their lands, leading to cultural and social disruptions. The dams
+      can harm the Amazon rainforest, disrupting the natural flow of rivers and impacting local plants and animals. Sometimes,
+      the benefits of this energy don't reach everyone equally, with rural and marginalized communities often left with the
+      negative effects while others reap the rewards.
+    </p>
   </div>
 
   <div id="hangman-game" style="margin: 20px;">
-  <h3>Hangman Game: How do we call big projects that harm marginalized communities?</h1>
-  <div>
-    <p>You have <span id="numleft">15</span> chances left.</p>
+    <h3>Hangman Game: How do we call big projects that harm marginalized communities?</h3>
+    <div>
+      <p>You have <span id="numleft">15</span> chances left.</p>
+    </div>
+    <div>
+      <p>The word to guess is <span id="word" style="font-weight:bold;"></span></p>
+    </div>
+    <div>
+      <p>Click on a letter to make a guess!</p>
+      <p>
+        <span class="letter" id="i">i</span>
+        <span class="letter" id="n">n</span>
+        <span class="letter" id="j">j</span>
+        <span class="letter" id="u">u</span>
+        <span class="letter" id="s">s</span>
+        <span class="letter" id="t">t</span>
+        <span class="letter" id="c">c</span>
+        <span class="letter" id="e">e</span>
+      </p>
+    </div>
+    <div id="error_msg" style="color:red;"></div>
   </div>
-  <div>
-    <p>The word to guess is <span id="word" style="font-weight:bold;"></span></p>
-  </div>
-  <div>
-    <p>Click on a letter to make a guess!</p>
-    <p>
-      <span class="letter" id="i">i</span>
-      <span class="letter" id="n">n</span>
-      <span class="letter" id="j">j</span>
-      <span class="letter" id="u">u</span>
-      <span class="letter" id="s">s</span>
-      <span class="letter" id="t">t</span>
-      <span class="letter" id="c">c</span>
-      <span class="letter" id="e">e</span>
-    </p>
-  </div>
-  <div id="error_msg" style="color:red;"></div>
-</div>
 
-<script>
-  $(document).ready(function () {
-    var total_guesses = 15;
-    var word = "injustice";
-    var blanks = "_".repeat(word.length);
-    var guesses = "";
-    $("#word").html(blanks);
+  <script>
+    $(document).ready(function () {
+      var total_guesses = 15;
+      var word = "injustice";
+      var blanks = "_".repeat(word.length);
+      var guesses = "";
+      $("#word").html(blanks);
 
-    $(".letter").click(function () {
-      var id = $(this).attr('id');
+      $(".letter").click(function () {
+        var id = $(this).attr('id');
 
-      if (guesses.includes(id)) {
-        $("#error_msg").html("You already guessed " + id);
-      } else {
-        guesses = guesses + id;
-        $("#" + id).css('text-decoration', 'line-through');
-        total_guesses = total_guesses - 1;
-        if (total_guesses < 0) {
-          $("#error_msg").html("You are out of guesses. You lose! It is not 'development'; it's 'injustice!'");
+        if (guesses.includes(id)) {
+          $("#error_msg").html("You already guessed " + id);
         } else {
-          $("#numleft").html(total_guesses);
-          if (word.includes(id)) {
-            var indices = [];
-            for (var i = 0; i < word.length; i++) {
-              if (word[i] === id) {
-                indices.push(i);
+          guesses = guesses + id;
+          $("#" + id).css('text-decoration', 'line-through');
+          total_guesses = total_guesses - 1;
+          if (total_guesses < 0) {
+            $("#error_msg").html("You are out of guesses. You lose! It is not 'development'; it's 'injustice!'");
+          } else {
+            $("#numleft").html(total_guesses);
+            if (word.includes(id)) {
+              var indices = [];
+              for (var i = 0; i < word.length; i++) {
+                if (word[i] === id) {
+                  indices.push(i);
+                }
               }
-            }
-            for (var i = 0; i < indices.length; i++) {
-              var index = indices[i];
-              blanks = blanks.substr(0, index) + id + blanks.substr(index + 1);
-            }
-            $("#word").html(blanks);
-            if (blanks === word) {
-              $("#error_msg").text("You win, but we all lose! It's an injustice indeed");
+              for (var i = 0; i < indices.length; i++) {
+                var index = indices[i];
+                blanks = blanks.substr(0, index) + id + blanks.substr(index + 1);
+              }
+              $("#word").html(blanks);
+              if (blanks === word) {
+                $("#error_msg").text("You win, but we all lose! It's an injustice indeed");
+              }
             }
           }
         }
-      }
+      });
     });
-  });
-</script>
+  </script>
 
-       <div class="map-container">
+  <div class="map-container">
     <div id="map1"></div>
     <div class="button-container">
-       <button id="toggleVulnerabilidade" class="toggle-button vulnerabilidade" hidden>Toggle the Vulnerability Layer</button>
+      <button id="toggleVulnerabilidade" class="toggle-button vulnerabilidade" hidden>Toggle the Vulnerability Layer</button>
       <button id="toggleQuilombola" class="toggle-button quilombola" hidden>Toggle the Quilombola Layer</button>
       <button id="toggleHidro" class="toggle-button" hidden>Toggle the Hydropower Layer</button>
       <button id="toggleEdif" class="toggle-button">Toggle the Edif Layer</button>
@@ -347,40 +341,30 @@
 
       L.control.layers(baseMaps).addTo(map);
 
-
       var response;
-    
-      
-      response = $.ajax({
+
+         response = $.ajax({
         url: "hidro.geojson",
         dataType: "json",
         success: function (data) {
           console.log("Hydropower data loaded");
-
-    });
-
-
+          var markers = L.markerClusterGroup({
+            iconCreateFunction: function (cluster) {
+              return L.divIcon({ html: '<b>' + cluster.getChildCount() + '</b>' });
+            }
+          });
           
           hidroLayer = L.geoJSON(data, {
             pointToLayer: function (feature, latlng) {
-              return L.marker(latlng, {
-                icon: L.icon({
-                  iconUrl: "bluedot.png",
-                  iconSize: [5, 8],
-            
-            
-                })
-              });
+              return L.marker(latlng);  // Remove the 'icon' option here
             },
             onEachFeature: function (feature, layer) {
               layer.bindPopup("<b>Name of Unit " + feature.properties.nome + "</b><br>" +
                 "Is it operating? " + feature.properties.operaciona);
             }
-
-            var markers = L.MarkerClusterGroup();
-                    markers.addLayer(hidroLayer);
-                  
           });
+
+          markers.addLayer(hidroLayer);
 
           $("#toggleHidro").show();
           $("#toggleHidro").click(function () {
@@ -411,7 +395,6 @@
                 icon: L.icon({
                   iconUrl: "edificon.png",
                   iconSize: [25, 41],
-            
                 })
               });
             },
@@ -445,7 +428,6 @@
                 icon: L.icon({
                   iconUrl: "termoicon.png",
                   iconSize: [25, 41],
-         
                 })
               });
             },
@@ -493,7 +475,7 @@
         }
       });
 
-        response = $.ajax({
+      response = $.ajax({
         url: "brasilvulnerabilidade.geojson",
         dataType: "json",
         success: function (data) {
@@ -517,61 +499,36 @@
           });
         }
       });
-
     }
 
-  
-
     initialize();
-
-
   </script>
 
-    <div class="map-description">
-      <img src="brazilian_flag.png" alt="Brazilian Flag" style="width: 30px; margin-right: 10px;">
-      <p>This map is made of data from some cool Brazilian institutions.</p>
-      <p><strong>Vulnerability</strong> here refers to flood vulnerability in Brazil, with data on segments of flood-prone watercourses with attributes of occurrence frequency, degree of impact, and susceptibility to gradual flooding. The data is from ANA, the national water agency.</p>
-      <a href="https://metadados.snirh.gov.br/geonetwork/srv/por/catalog.search#/metadata/2cfa808b-b370-43ef-8107-5c3bfd7acf9c" target="_blank" class="data-source-link">Go to Data Source!</a>
-      <p><strong>Quilombola territory</strong> is a land area historically inhabited by descendants of Afro-Brazilian runaway slaves. The data is from INCRA, the National Institute of Colonization and Agrarian Reform.</p>
-      <a href="https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/quilombolas#:~:text=Por%20for%C3%A7a%20do%20Decreto%20n%C2%BA,%2C%20social%2C%20econ%C3%B4mica%20e%20cultural." target="_blank" class="data-source-link">Go to Data Source!</a>
-      <p>The other three layers are from IBGE, the Brazilian Institute of Geography and Statistics. It is the main provider of data and information for the country. With data from 2017, the layers cover:</p>
-      <p><strong>Edif:</strong> Building component of an energy generation, transmission, and/or distribution system.</p>
-      <p><strong>Hydropower:</strong> Architectural complex aimed at producing electric energy through the utilization of the hydraulic potential existing in a river, hydroelectric power station.</p>
-      <p><strong>Termo:</strong> A thermal power plant is a set of structures and equipment aimed at producing electromagnetic energy through the conversion of the chemical energy contained in a specific fuel.</p>
-      <a href="https://www.ibge.gov.br/apps/basescartograficas/#/home" target="_blank" class="data-source-link">Go to Data Source!</a>
-      <p>With this map, I aimed to see if there were links between socioeconomic vulnerability, historical marginalization, and the location of energy infrastructure.</p>
-      <p>Do you see any links?</p>
-      <label><input type="checkbox" id="see-links-yes"> Yep, I see links</label>
-      <label><input type="checkbox" id="see-links-no"> Nope, no links</label>
-    </div>
+  <div class="map-description">
+    <img src="brazilian_flag.png" alt="Brazilian Flag" style="width: 30px; margin-right: 10px;">
+    <p>This map is made of data from some cool Brazilian institutions.</p>
+    <p><strong>Vulnerability</strong> here refers to flood vulnerability in Brazil, with data on segments of flood-prone watercourses with attributes of occurrence frequency, degree of impact, and susceptibility to gradual flooding. The data is from ANA, the national water agency.</p>
+    <a href="https://metadados.snirh.gov.br/geonetwork/srv/por/catalog.search#/metadata/2cfa808b-b370-43ef-8107-5c3bfd7acf9c" target="_blank" class="data-source-link">Go to Data Source!</a>
+    <p><strong>Quilombola territory</strong> is a land area historically inhabited by descendants of Afro-Brazilian runaway slaves. The data is from INCRA, the National Institute of Colonization and Agrarian Reform.</p>
+    <a href="https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/quilombolas#:~:text=Por%20for%C3%A7a%20do%20Decreto%20n%C2%BA,%2C%20social%2C%20econ%C3%B4mica%20e%20cultural." target="_blank" class="data-source-link">Go to Data Source!</a>
+    <p>The other three layers are from IBGE, the Brazilian Institute of Geography and Statistics. It is the main provider of data and information for the country. With data from 2017, the layers cover:</p>
+    <p><strong>Edif:</strong> Building component of an energy generation, transmission, and/or distribution system.</p>
+    <p><strong>Hydropower:</strong> Architectural complex aimed at producing electric energy through the utilization of the hydraulic potential existing in a river, hydroelectric power station.</p>
+    <p><strong>Termo:</strong> Electric energy generation system where the operational principle is the thermodynamic cycle of steam and/or gas.</p>
+    <a href="https://downloads.ibge.gov.br/downloads_geociencias.htm" target="_blank" class="data-source-link">Go to Data Source!</a>
   </div>
 
-<style> 
-        .embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} 
-      .embed-container iframe, .embed-container object, .embed-container iframe{
-        position: absolute; top: 0; left: 0; 
-        height: 500px;
-      width: 800px;
-      margin: 30px auto;
-      border: 2px solid #ddd;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      } small{
-        position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;} </style>
-    <div class="map-container">
-    <div id="map2"></div>
-  <div     class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" 
-          marginheight="0" marginwidth="0" title="Energy use x large dams construction" 
-            src="//dartmouth.maps.arcgis.com/apps/Embed/index.html?webmap=43327c892dd14ed492cf8e48c2736337&extent=-180,
-              -55.3875,180,80.236&zoom=true&previewImage=false&scale=true&legendlayers=true&disable_scroll=true&theme=light"></iframe></div>
-    
+  <div class="embed-container">
+    <h2>Check out the Brazilian energy matrix below:</h2>
+    <iframe width="100%" height="400" frameborder="0" scrolling="no" src="//plotly.com/~pantchoa/6.embed"></iframe>
+    <p><a href="https://plotly.com/~pantchoa/6/" target="_blank">Interactive Version</a></p>
   </div>
-   <div class="map-description">
-    <p>In this map, you can see two layers: Energy Use by country (Feature layer by Maps.com_carto), in blue, and Construction of Large Dams (Source: Feature layer by tboucher), in green dots. In both cases, darker color represents higher intensity (darker blue: higher energy use; darker green: more dams). Here, you can see how countries in North use more energy, and that the South produces more energy. Why is this an issue?</p>
-    <p>Well, because of a larger trend called "Ecological imperialism," in which countries of the North extract the natural resources of the South (Fernandes, 2020). It is often the case that energy produced in developing countries is sold to developed ones, and, sometimes, even the owners of the producing companies are from the developed world! Of course that dams are not the only type of energy, but you can definitely see a trend here.</p>
-   </div> </div>
-</div>
-  
+
+  <div class="container">
+    <h2>References</h2>
+    <p>[1] Kids Discover. (2023). What is Energy? Kids Discover.</p>
+    <p>[2] World Wildlife Fund. (2023). The Energy Story - Chapter 3: Conventional Energy. Kids.Mongabay.com.</p>
+  </div>
 </body>
 
 </html>
