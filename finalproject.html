@@ -355,19 +355,14 @@
       var response;
     
       
-      response = $.ajax{
+      response = $.ajax({
         url: "hidro.geojson",
         dataType: "json",
         success: function (data) {
           console.log("Hydropower data loaded");
-          var markers = L.markerClusterGroup();
 
+    });
 
-    };
-
-    // Add the marker cluster group to the map
-      markers.addLayer(marker);
-    map.addLayer(markers);
 
           
           hidroLayer = L.geoJSON(data, {
@@ -376,6 +371,9 @@
                 icon: L.icon({
                   iconUrl: "bluedot.png",
                   iconSize: [5, 8],
+                   markers = new L.MarkerClusterGroup({showCoverageOnHover:false});
+                    markers.addLayer(marker);
+                      map.addLayer(markers);
             
                 })
               });
