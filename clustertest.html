@@ -231,18 +231,15 @@
       }
     });
 
-    // Create a marker cluster group and add the hidroLayer to it
-    var hidroCluster = L.markerClusterGroup();
-    hidroCluster.addLayer(hidroLayer);
+      markers.addLayer(hidroLayer); // Add the hydropower layer to marker cluster
 
-    // Toggle marker clustering
-    $("#toggleCluster").click(function () {
-      if (map.hasLayer(hidroCluster)) {
-        map.removeLayer(hidroCluster);
-      } else {
-        map.addLayer(hidroCluster);
-      }
-    });
+        $("#toggleCluster").click(function () {
+          if (map.hasLayer(markers)) {
+            map.removeLayer(markers);
+          } else {
+            map.addLayer(markers);
+          }
+        });
 
     $("#toggleHidro").show();
     $("#toggleHidro").click(function () {
