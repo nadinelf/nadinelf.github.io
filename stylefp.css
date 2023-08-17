@@ -191,12 +191,12 @@ button:hover {
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      margin-top: 10px;
+      margin-top: 5px;
     }
     
     .embed-container {
-      width: calc(100% - 40px); /* updated */
-      margin: 30px auto; /* updated */
+      width: calc(100% - 40px); 
+      margin: 30px auto; 
       max-width: 800px;
       border-radius: 20px;
       overflow: hidden;
@@ -207,7 +207,7 @@ button:hover {
   padding-bottom: 80%; 
   height: 0; 
   max-width: 100%;   
-  margin: 30px auto 50px auto; /* Added bottom margin */
+  margin: 30px auto 50px auto; 
   padding-left: 30px; 
   padding-right: 30px;
 }
@@ -222,7 +222,8 @@ button:hover {
       border: none;
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      margin: 20px 20px 
+      margin: 20px 20px;
+     margin-bottom: 0; 
     }
     
     #hangman-game {
