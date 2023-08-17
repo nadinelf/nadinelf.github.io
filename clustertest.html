@@ -43,35 +43,36 @@
 
   <div class="container">
     <p>
-      Imagine you have a super bouncy ball. When you throw it on the ground, it bounces back up, right? That
-      bouncing action is like energy. Energy is a special invisible thing that helps things happen and makes them move.
-      Just like how the bouncy ball has the power to bounce, everything around us, like toys, cars, and even our own
-      bodies, has its own kind of energy that makes it work and move.
+      Energy is a special invisible thing that helps things happen and makes them move. (Like turning on light bulbs!)
+      Everything around us, like toys, cars, and even our own bodies, has its own kind of energy that makes it work and move.
     </p>
   </div>
 
-  <div class="container">
-    <p>
-      Hydropower energy is like using the power of water to make things work. Imagine a big waterfall with water rushing
-      down really fast. People can put special machines in the water that use its energy to spin around, just like a
-      water wheel or a spinning top. So, hydropower is like having a super fun
-      and strong friend, water, that helps us make electricity by playing and spinning around!
-    </p>
-    <p>In Brazil, while big dams like the <span class="tooltip-container">
-        <span class="tooltip-content">
-          <img src="belomonte.jpeg" alt="Belo Monte">
-        </span>
-        <span class="tooltip">Belo Monte</span></span>
-      and <span class="tooltip-container">
-        <span class="tooltip-content">
-          <img src="Itaipu.jpeg" alt="Itaipu">
-        </span>
-        <span class="tooltip">Itaipu</span></span> brought power to cities and industries, they've also caused problems.
-      Indigenous communities have faced displacement from their lands, leading to cultural and social disruptions. The dams
-      can harm the Amazon rainforest, disrupting the natural flow of rivers and impacting local plants and animals. Sometimes,
-      the benefits of this energy don't reach everyone equally, with rural and marginalized communities often left with the
-      negative effects while others reap the rewards.
-    </p>
+<div class="container">
+  <p>
+    Electricity -- a special type of energy -- can be generated in a lot of ways. In my home country, Brazil, a very common way is called  
+    "hydropower energy," which is like using the power of water to make things work. Imagine a big waterfall with water rushing
+    down really fast. People can put special machines in the water that use its energy to spin around, just like a
+    water wheel or a spinning top. 
+  </p>
+  <p>In Brazil, while big dams like the <span class="tooltip-container">
+      <span class="tooltip-content">
+        <img src="belomonte.jpeg" alt="Belo Monte">
+      </span>
+      <span class="tooltip">Belo Monte</span></span>
+    and <span class="tooltip-container">
+      <span class="tooltip-content">
+        <img src="Itaipu.jpeg" alt="Itaipu">
+      </span>
+      <span class="tooltip">Itaipu</span></span> brought power to cities and industries, they have also caused problems.
+    Brazil usually constructs very large dams, that are placed in water bodies and end up displacing its other functions in the socio-ecosystem. 
+    Indigenous communities often consider water bodies as parts of their own bodies, but this special relationship is destroyed when such a big project is constructed.
+    Also, the dams can harm the Amazon rainforest, disrupting the natural flow of rivers and impacting local plants and animals. It can also increase the chances of an area -- perhaps populated by low-income communities -- being flooded.
+  </p>
+
+  <p>That is all to say that, sometimes, energy -- even the renewable kind -- has a cost. And those often fall on rural and marginalized communities. We call this <strong>"energy injustices"</strong>. The next map tries to hint at this phenomenon.</p>
+</div>
+
   </div>
 
   <div id="hangman-game" style="margin: 20px;">
@@ -140,7 +141,7 @@
       });
     });
   </script>
-
+<h3>Energy Infrastructure & Socio-Economic Vulnerability</h3>
   <div class="map-container">
     <div id="map1"></div>
     <div class="button-container">
@@ -179,7 +180,6 @@
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
         'Tiles courtesy of <a href="http://www.hot.osm.org">HOT OSM</a>'
     });
-
     function initialize() {
       // Define the bounds of Brazil
       var brazilBounds = L.latLngBounds(
@@ -383,6 +383,10 @@
     <a href="https://downloads.ibge.gov.br/downloads_geociencias.htm" target="_blank" class="data-source-link">Go to Data Source!</a>
   </div>
 
+  <p>Something IBGE has not produced data on (yet!) is energy injustice. In Brazil, many families struggle to pay their electricity bills and for cooking gas, 
+    and approximately 1 million people lack access to electrical power in the Legal Amazon region. Furthermore, the recent privatization of Latin America's largest 
+    electric energy company, Eletrobrás, has deteriorated the quality of the service for the Brazilian population. However, it has not always been like this. See this timeline with some key energy events in the country: </p>
+
  <div class="container">
   <h2>Main events of the Brazilian energy grid development</h2>
   <div class="timeline-container">
@@ -414,7 +418,7 @@
     </div>
   </div>
 </div>
-
+    
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const events = document.querySelectorAll(".event");
@@ -439,7 +443,11 @@
     showEvent(currentIndex);
   });
 </script>
-  
+
+    <p> It is not only in Brazil that a lot is changing in the energy sector. Countries in the Global South are emerging as hubs for
+    for development of large renewable projects, given the demand to transition away from fossil fuels. However, those are not the 
+    same countries consuming all that energy. The next map shows this phenomenon. </p>
+    
   <h3>Global Energy Use x Large Dams Construction</h3>
 <div class="embed-container" style="margin-top: 0;">
   <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Energy use x large dams construction" 
@@ -447,12 +455,17 @@
             -55.3875,180,80.236&zoom=true&previewImage=false&scale=true&legendlayers=true&disable_scroll=true&theme=light">
   </iframe>
 </div>
-
-<div class="map-description">
-  <p>In this map, you can see two layers: Energy Use by country (Feature layer by Maps.com_carto), in blue, and Construction of Large Dams (Source: Feature layer by tboucher), in green dots. In both cases, darker color represents higher intensity (darker blue: higher energy use; darker green: more dams). Here, you can see how countries in North use more energy, and that the South produces more energy. Why is this an issue?</p>
-  <p>Well, because of a larger trend called "Ecological imperialism," in which countries of the North extract the natural resources of the South (Fernandes, 2020). It is often the case that energy produced in developing countries is sold to developed ones, and, sometimes, even the owners of the producing companies are from the developed world! Of course that dams are not the only type of energy, but you can definitely see a trend here.</p>
-</div>
-
+  <p>In this map, you can see two layers: Energy Use by country (Feature layer by Maps.com_carto), in blue, and Construction of Large Dams (Source: Feature layer by tboucher), in green dots. 
+    In both cases, darker color represents higher intensity (darker blue: higher energy use; darker green: more dams). 
+    Here, you can see how countries in North use more energy, and that those in the South produces more energy. <strong>Why does this matter?</strong> </p>
+  <p>Because of something called "Ecological imperialism," in which countries of the North extract the natural resources of the South (Fernandes, 2020). This is now happening with energy too!
+    It is often the case that energy produced in developing countries is sold to developed ones, and, sometimes, even the owners of the producing companies are from the developed world! 
+    Here, the intervention of foreign countries in such a strategic field as energy messes with notions of ownership, sovereignty, and development. Often, this intervention takes the benefits of energy away, and leaves its negative 
+    consequences to the developing world (following a historical pattern that roots all the way back to imperialism). 
+    </p>
+  <p>It is important to continue paying attention to transnational energy interactions, to ensure equity and justice for Global South nations, such as Brazil.</p>
+<p>This is an unfinished story because this is the beginning of my two-year-long research project on energy justice in Brazil. I will keep updating this page!</p>
+    
   <div class="container">
   <h2>Comments and Feedback</h2>
   <div class="comments-container">
